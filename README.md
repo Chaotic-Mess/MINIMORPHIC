@@ -6,7 +6,7 @@ This repository contains the core development assets for the Minimorphic platfor
 
 It brings together mechanical design, electronics, firmware, and system documentation in a unified workspace for developing the Minimorphic ecosystem.
 
-**Project site:** https://minimorphic.github.io   
+**Project site:** [https://minimorphic.github.io   ](https://chaotic-mess.github.io/MINIMORPHIC/)
 
 ## Scope
 
