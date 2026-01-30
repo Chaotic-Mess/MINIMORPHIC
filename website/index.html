@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINIMORPHIC - Building SLATE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grid-bg"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo-wrapper">
+                <img src="/branding/TextLogo.png" alt="MINIMORPHIC">
+            </div>
+            <div class="tagline">// building something different</div>
+        </header>
+
+        <section class="hero">
+            <div class="sketch-element sketch-arrow"></div>
+            <h1>Building <span class="highlight">SLATE</span>, one iteration at a time</h1>
+            <p>A devlog documenting the journey of creating a custom laptop from scratch. No corporate polish, just honest progress, experiments, and the occasional breakthrough.</p>
+        </section>
+
+        <section class="updates-section">
+            <h2 class="section-title">Recent Updates</h2>
+            
+            <div class="update-cards">
+                <div class="card">
+                    <span class="card-tag">CREATION</span>
+                    <h3>Founding</h3>
+                    <p>Created a dream. MINIMORPHIC has officially begun its journey.</p>
+                    <div class="card-date">Jan 30, 2026 | 11:50pm</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Want to follow along?</h2>
+            <p>Updates are irregular but honest. No marketing speak, just the real process.</p>
+            <a href="#" class="btn">Subscribe to Updates</a>
+        </section>
+
+        <footer>
+            <p>MINIMORPHIC © 2026 • Built with curiosity and spite</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add slight parallax effect to cards on scroll
+        document.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                const speed = 0.5 + (index * 0.1);
+                card.style.transform = `translateY(${scrolled * speed * 0.01}px)`;
+            });
+        });
+
+        // Add subtle rotation animation on hover for logo
+        const logo = document.querySelector('.logo-wrapper');
+        logo.addEventListener('mousemove', (e) => {
+            const rect = logo.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            logo.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        logo.addEventListener('mouseleave', () => {
+            logo.style.transform = 'rotate(-1deg)';
+        });
+    </script>
+</body>
+</html>
