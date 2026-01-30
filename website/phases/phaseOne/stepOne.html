@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Phase One, STEP ONE — Minimorphic SLATE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #121212;
+            --muted: #7a7a7a;
+            --hair: #ececec;
+            --accent: #ff4f7a;
+            --max: 760px;
+        }
+
+        body {
+            margin: 0;
+            padding: 96px 28px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.75;
+            overflow-x: hidden;
+        }
+
+        .wrap {
+            max-width: var(--max);
+            margin: 0 auto;
+        }
+
+        .kicker {
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            margin: 0 0 44px 0;
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--hair);
+            margin: 56px 0;
+        }
+
+        p {
+            margin: 12px 0;
+            color: #222;
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .quote {
+            border-left: 2px solid var(--hair);
+            padding-left: 14px;
+            color: #333;
+            margin: 18px 0;
+        }
+
+        h2 {
+            margin: 44px 0 10px 0;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        ul {
+            margin: 10px 0 10px 18px;
+            padding: 0;
+        }
+
+        li {
+            margin: 8px 0;
+            color: #222;
+        }
+
+        .pillRow {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 16px 0 0;
+        }
+
+        .pill {
+            border: 1px solid var(--hair);
+            border-radius: 999px;
+            padding: 6px 10px;
+            font-size: 12px;
+            color: var(--muted);
+            background: rgba(0, 0, 0, .02);
+        }
+
+        .accentLine {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 79, 122, .55), transparent);
+            margin: 44px 0;
+        }
+
+        /* subtle background glow (quiet, not flashy) */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: auto;
+            top: -220px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 820px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(255, 79, 122, .12), transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* gentle entry animation */
+        .fade {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeUp .7s ease forwards;
+        }
+
+        .fade.d2 {
+            animation-delay: .08s
+        }
+
+        .fade.d3 {
+            animation-delay: .16s
+        }
+
+        .fade.d4 {
+            animation-delay: .24s
+        }
+
+        .fade.d5 {
+            animation-delay: .32s
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="kicker fade">Minimorphic / SLATE / Phase One</div>
+        <h1 class="fade d2">Reality Check (Prototype Brain)</h1>
+
+        <p class="fade d3">
+            I am not making a CPU. I am not taping out silicon. I am not becoming Intel in a garage.
+        </p>
+        <p class="fade d4">
+            I am building an object that contains a computer.
+        </p>
+
+        <div class="quote fade d5">
+            That means I pick a brain that already exists, that has documentation, has drivers, has a community,
+            and boots without summoning god knows what.
+        </div>
+
+        <hr>
+
+        <h2 class="fade">What I actually want</h2>
+        <p class="fade d2 muted">
+            Laptop prototype requirements, in plain language:
+        </p>
+        <ul class="fade d3">
+            <li>Enough power to feel like a laptop (not a toy)</li>
+            <li>Low power draw so I can run it off a real battery</li>
+            <li>Real OS support (Linux is the minimum; Windows ideally.)</li>
+            <li>Affordable hardware I can buy today</li>
+            <li>Documentation that doesn’t require NDAs and prayer</li>
+        </ul>
+
+        <div class="accentLine"></div>
+
+        <h2 class="fade">Three sane paths</h2>
+
+        <h2 class="fade d2">Path 1: Raspberry Pi Compute Module (ARM)</h2>
+        <p class="fade d3">
+            This is the “I actually want to finish this project” option.
+        </p>
+        <ul class="fade d4">
+            <li>Huge documentation and community</li>
+            <li>Easy power requirements</li>
+            <li>Small footprint</li>
+            <li>Can later design a carrier board as a real Minimorphic step</li>
+        </ul>
+        <p class="fade d5 muted">
+            Tradeoff: not ultrabook-fast. But it’s perfect for proving the object and the module system.
+        </p>
+
+        <h2 class="fade">Path 2: Intel N100 / N95 class (x86)</h2>
+        <p class="fade d2">
+            This is the “real laptop feel without enterprise complexity” typeshit option.
+        </p>
+        <ul class="fade d3">
+            <li>x86 compatibility: things behave like a normal PC</li>
+            <li>Low power, workable thermals</li>
+            <li>Good performance per watt for early prototypes</li>
+            <li>Dev boards exist at reasonable prices</li>
+        </ul>
+        <p class="fade d4 muted">
+            Tradeoff: less open ecosystem, and custom board design later gets more painful. Like no doc. So probably
+            not.
+        </p>
+
+        <h2 class="fade">Path 3: AMD Ryzen embedded / laptop-class modules</h2>
+        <p class="fade d2">
+            This is the “oh for fucks sake” option.
+        </p>
+        <ul class="fade d3">
+            <li>Serious performance</li>
+            <li>Real ultrabook class</li>
+        </ul>
+        <p class="fade d4 muted">
+            Tradeoff: cost and complexity. Documentation can be restricted. Power and routing get real, fast.
+        </p>
+
+        <hr>
+
+        <h2 class="fade">The point you can’t skip</h2>
+        <p class="fade d2">
+            Not exactly choosing the final CPU right now.
+        </p>
+        <div class="quote fade d3">
+            Simply are choosing the development brain that lets me design the object.
+        </div>
+
+        <p class="fade d4 muted">
+            The win in Phase One is not benchmarks. The win is a working Minimorphic object: enclosure, modules, power
+            plan, thermals,
+            and a clean integration story.
+        </p>
+
+        <div class="pillRow fade d5">
+            <span class="pill">Pick: ARM (easier, documented) or x86 (more “laptop”) </span>
+            <span class="pill">Then: build the object around it</span>
+            <span class="pill">Then: iterate toward custom hardware</span>
+        </div>
+
+        <div class="accentLine"></div>
+
+        <p class="muted fade">
+            Phase One outcome: define the object before building the parts.
+        </p>
+    </div>
+</body>
+
+</html>

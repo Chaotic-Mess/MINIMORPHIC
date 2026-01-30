@@ -19,7 +19,7 @@
     <div class="container">
         <header>
             <div class="logo-wrapper">
-                <img src="/branding/TextLogo.png" alt="MINIMORPHIC">
+                <img src="branding/TextLogo.png" alt="MINIMORPHIC">
             </div>
             <div class="tagline">// building something different</div>
         </header>
@@ -44,6 +44,13 @@
             </div>
         </section>
 
+        <section class="phases-section">
+            <h2 class="section-title">Development Phases</h2>
+            <div id="phases-container" class="phases-container">
+                <!-- Phases loaded dynamically -->
+            </div>
+        </section>
+
         <section class="cta-section">
             <h2>Want to follow along?</h2>
             <p>Updates are irregular but honest. No marketing speak, just the real process.</p>
@@ -58,6 +65,8 @@
                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 18 4.77 5.07 5.07 0 0 0 18.09 1s-1.18-.35-3.91 1.36A13.38 13.38 0 0 0 12 3.27a13.38 13.38 0 0 0-2.18-.91C7.09.65 5.91 1 5.91 1A5.07 5.07 0 0 0 6 4.77 5.44 5.44 0 0 0 4.5 9c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.61V22"></path>
                     </svg>
                 </a>
+                <br>
+                <br>
                 <a href="https://www.linkedin.com/in/zacmatthias/" target="_blank" aria-label="LinkedIn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path>
@@ -65,6 +74,8 @@
                         <circle cx="4" cy="4" r="2"></circle>
                     </svg>
                 </a>
+                <br>
+                <br>
                 <a href="https://www.instagram.com/zacmatthias_/" target="_blank" aria-label="Instagram">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -103,6 +114,67 @@
         logo.addEventListener('mouseleave', () => {
             logo.style.transform = 'rotate(-1deg)';
         });
+
+        // Load phases and steps dynamically
+        async function loadPhases() {
+            try {
+                const response = await fetch('phases.json');
+                const data = await response.json();
+                renderPhases(data.phases);
+            } catch (error) {
+                console.error('Failed to load phases:', error);
+                document.getElementById('phases-container').innerHTML = 
+                    '<p class="error-msg">Unable to load phases. Please refresh.</p>';
+            }
+        }
+
+        function getStatusIcon(status) {
+            switch(status) {
+                case 'complete': return '✓';
+                case 'in-progress': return '→';
+                default: return '○';
+            }
+        }
+
+        function renderPhases(phases) {
+            const container = document.getElementById('phases-container');
+            container.innerHTML = '';
+
+            phases.forEach((phase, phaseIndex) => {
+                const phaseEl = document.createElement('div');
+                phaseEl.className = `phase-block ${phase.status}`;
+                phaseEl.style.animationDelay = `${phaseIndex * 0.1}s`;
+
+                const stepsHtml = phase.steps.map((step, stepIndex) => `
+                    <a href="${step.url}" class="step-item ${step.status}" style="animation-delay: ${(phaseIndex * 0.1) + (stepIndex * 0.05)}s">
+                        <span class="step-status">${getStatusIcon(step.status)}</span>
+                        <div class="step-content">
+                            <h4>${step.title}</h4>
+                            <p>${step.description}</p>
+                            <span class="step-date">${step.date}</span>
+                        </div>
+                    </a>
+                `).join('');
+
+                phaseEl.innerHTML = `
+                    <div class="phase-header">
+                        <div class="phase-info">
+                            <span class="phase-tag">${phase.title}</span>
+                            <h3>${phase.subtitle}</h3>
+                        </div>
+                        <span class="phase-status-badge ${phase.status}">${phase.status.replace('-', ' ')}</span>
+                    </div>
+                    <div class="steps-list">
+                        ${stepsHtml}
+                    </div>
+                `;
+
+                container.appendChild(phaseEl);
+            });
+        }
+
+        // Load phases on page load
+        document.addEventListener('DOMContentLoaded', loadPhases);
     </script>
 </body>
 

@@ -1,0 +1,20 @@
+{
+  "phases": [
+    {
+      "id": "phaseOne",
+      "title": "Phase One",
+      "subtitle": "Foundation & Brain Selection",
+      "status": "in-progress",
+      "steps": [
+        {
+          "id": "stepOne",
+          "title": "Reality Check (Prototype Brain)",
+          "description": "Choosing the development brain that lets us design the object.",
+          "date": "Jan 30, 2026",
+          "status": "complete",
+          "url": "phases/phaseOne/stepOne.html"
+        }
+      ]
+    }
+  ]
+}
