@@ -18,7 +18,7 @@
 
     <div class="container">
         <header>
-            <div class="logo-wrapper">
+            <div class="logo-wrapper" style="transform: rotate(-1deg);">
                 <img src="branding/TextLogo.png" alt="MINIMORPHIC">
             </div>
             <div class="tagline">// building something different</div>
@@ -35,11 +35,19 @@
             <h2 class="section-title">Recent Updates</h2>
 
             <div class="update-cards">
-                <div class="card">
+                <div class="card" style="transform: translateY(0px);"
+                    onclick="window.location.href='updates/Update1.html';">
                     <span class="card-tag">CREATION</span>
                     <h3>Founding</h3>
                     <p>Created a dream. MINIMORPHIC has officially begun its journey.</p>
                     <div class="card-date">Jan 30, 2026 | 11:50pm</div>
+                </div>
+                <div class="card" style="transform: translateY(0px);"
+                    onclick="window.location.href='updates/Update1.html';">
+                    <span class="card-tag">DEBUG ONE</span>
+                    <h3>Debug Card #1</h3>
+                    <p>Just some text here.</p>
+                    <div class="card-date">Day, Month, Year | 12:Hr Time</div>
                 </div>
             </div>
         </section>
@@ -47,7 +55,26 @@
         <section class="phases-section">
             <h2 class="section-title">Development Phases</h2>
             <div id="phases-container" class="phases-container">
-                <!-- Phases loaded dynamically -->
+                <div class="phase-block in-progress" style="animation-delay: 0s;">
+                    <div class="phase-header">
+                        <div class="phase-info">
+                            <span class="phase-tag">Phase One</span>
+                            <h3>Foundation &amp; Brain Selection</h3>
+                        </div>
+                        <span class="phase-status-badge in-progress">in progress</span>
+                    </div>
+                    <div class="steps-list">
+                        <a href="phases/phaseOne/stepOne.html" class="step-item complete" style="animation-delay: 0s">
+                            <span class="step-status">✓</span>
+                            <div class="step-content">
+                                <h4>Reality Check (Prototype Brain)</h4>
+                                <p>Choosing the development brain that lets us design the object.</p>
+                                <span class="step-date">Jan 30, 2026</span>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -60,24 +87,29 @@
         <footer>
             <p>MINIMORPHIC © 2026 • Built with curiosity and spite</p>
             <div class="social-links">
-                <a href="https://github.com/Chaotic-Mess/MINIMORPHIC?tab=readme-ov-file" target="_blank" aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 18 4.77 5.07 5.07 0 0 0 18.09 1s-1.18-.35-3.91 1.36A13.38 13.38 0 0 0 12 3.27a13.38 13.38 0 0 0-2.18-.91C7.09.65 5.91 1 5.91 1A5.07 5.07 0 0 0 6 4.77 5.44 5.44 0 0 0 4.5 9c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.61V22"></path>
+                <a href="https://github.com/Chaotic-Mess/MINIMORPHIC?tab=readme-ov-file" target="_blank"
+                    aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-github">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 18 4.77 5.07 5.07 0 0 0 18.09 1s-1.18-.35-3.91 1.36A13.38 13.38 0 0 0 12 3.27a13.38 13.38 0 0 0-2.18-.91C7.09.65 5.91 1 5.91 1A5.07 5.07 0 0 0 6 4.77 5.44 5.44 0 0 0 4.5 9c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.61V22">
+                        </path>
                     </svg>
                 </a>
-                <br>
-                <br>
                 <a href="https://www.linkedin.com/in/zacmatthias/" target="_blank" aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-linkedin">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path>
                         <rect x="2" y="9" width="4" height="12"></rect>
                         <circle cx="4" cy="4" r="2"></circle>
                     </svg>
                 </a>
-                <br>
-                <br>
                 <a href="https://www.instagram.com/zacmatthias_/" target="_blank" aria-label="Instagram">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-instagram">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -123,13 +155,13 @@
                 renderPhases(data.phases);
             } catch (error) {
                 console.error('Failed to load phases:', error);
-                document.getElementById('phases-container').innerHTML = 
+                document.getElementById('phases-container').innerHTML =
                     '<p class="error-msg">Unable to load phases. Please refresh.</p>';
             }
         }
 
         function getStatusIcon(status) {
-            switch(status) {
+            switch (status) {
                 case 'complete': return '✓';
                 case 'in-progress': return '→';
                 default: return '○';
