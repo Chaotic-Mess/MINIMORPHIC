@@ -14,7 +14,7 @@
         <h1 class="fade d2">Planning Phase: System Architecture & Design</h1>
 
         <p class="fade d3">
-            Welcome to the 2026 Desk Project devlog. This is where I document the creation of an L-shaped electric sit/stand desk with advanced AV control for three monitors, Xbox, desktop, and laptop. The goal is flexible device-to-monitor routing without constant cable unplugging.
+            Welcome to the 2026 Desk Project devlog! This is where I document the creation of an L-shaped electric sit/stand desk with advanced AV control for three monitors, Xbox, desktop, and laptop. The goal is flexible device-to-monitor routing without constant cable unplugging and monitor harrassment.
         </p>
 
         <h2 class="fade d4">Goal</h2>
@@ -23,7 +23,7 @@
         </p>
 
         <div class="quote fade d6">
-            Primary Objective: Allow any device to appear on any monitor without unplugging cables.
+            Primary Objective: Allow any device to appear on any monitor without unplugging cables or having to constantly molest the back of a monitor to find the input buttons.
         </div>
 
         <h2 class="fade d7">Examples of Desired Functionality</h2>
@@ -36,7 +36,7 @@
 
         <h2 class="fade d9">Final System Architecture (Locked)</h2>
         <p class="fade d10">
-            This project will NOT use a 4×4 matrix. Instead, the system uses:
+            This project will NOT use a 4×4 matrix OR a KVM. Instead, the system uses:
         </p>
         <ul class="fade d11">
             <li>3 independent HDMI switches (one per monitor)</li>
@@ -51,6 +51,17 @@
         <h2 class="fade d13">Core Concept</h2>
         <p class="fade d14">
             Each monitor gets its own input selector. Each monitor can independently choose between Desktop, Laptop, or Xbox.
+
+            Looks like this:
+        </p>
+
+        <img class="fade d15" src="../assets/logicPlan.png" alt="Diagram of AV routing: Desktop and Laptop both connect to each switch, Xbox connects to splitter which feeds all switches" />
+        <sub>Source: circuitlab.com</sub> 
+        <p class="fade d16">
+            This design allows for maximum flexibility. Each monitor can independently switch between any of the three devices without affecting the others.
+
+            (Ignore the real-world symbols in the diagram, they were just placeholders because I didn't want to draw. 
+            The actual implementation will use simple HDMI switches and a splitter, no custom electronics for now...)
         </p>
 
         <h2 class="fade d15">Hardware Layout</h2>
@@ -183,9 +194,9 @@
 
         <h2 class="fade d59">Things To Buy From Amazon</h2>
         <ul class="fade d60">
-            <li>Cable switch connecting to the monitor PER MONITOR (three for me) [LINK HERE]</li>
-            <li>HDMI cables (one pack of these for me) [LINK HERE]</li>
-            <li>Cable splitter (1in,4out) (one for me rn.) [LINK HERE]</li>
+            <li>Cable switch connecting to the monitor PER MONITOR (three for me) <a href="https://www.amazon.ca/gp/product/B0DLN4RLQF?smid=AKXVBT49GGF3B&psc=1" target="_blank" rel="noopener noreferrer">Amazon product</a></li>
+            <li>HDMI cables (one pack of these for me) <a href="https://www.amazon.ca/gp/product/B01MXF5VF7?smid=A3DWYIK6Y9EEQB&psc=1" target="_blank" rel="noopener noreferrer">Amazon product</a></li>
+            <li>Cable splitter (1in,4out) (one for me rn.) <a href="https://www.amazon.ca/gp/product/B0GCCZ57YV?smid=A2XUEGIH96RNP0&th=1" target="_blank" rel="noopener noreferrer">Amazon product</a></li>
         </ul>
 
         <div class="quote fade d61">
