@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Step One: System Architecture Design - 2026 Desk Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../../../styles/phaseStyles.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <a class="kicker fade" href="../../../../clientIndex.html">2026 Desk Project / Phase One / Step One</a>
+        <h1 class="fade d2">System Architecture Design</h1>
+
+        <p class="fade d3">
+            In this step, we finalized the core system architecture that will enable flexible AV control without the complexity and cost of a full matrix switcher.
+        </p>
+
+        <h2 class="fade d4">The Problem</h2>
+        <p class="fade d5">
+            Traditional setups require unplugging cables to switch devices between monitors. For gaming, work, and laptop use, this becomes tedious with multiple monitors.
+        </p>
+
+        <h2 class="fade d6">The Solution</h2>
+        <p class="fade d7">
+            Use 3 independent HDMI switches (one per monitor) combined with a splitter for the Xbox. This allows each monitor to independently select its input source.
+        </p>
+
+        <h2 class="fade d8">Why Not a Matrix?</h2>
+        <p class="fade d9">
+            While a 4×4 HDMI matrix would work, it costs significantly more and adds unnecessary complexity for our needs. The switch-based approach achieves the same functionality at a fraction of the cost.
+        </p>
+
+        <h2 class="fade d10">Hardware Decisions</h2>
+        <ul class="fade d11">
+            <li><strong>HDMI Switches:</strong> 3-port switches for each monitor (Desktop, Laptop, Xbox inputs)</li>
+            <li><strong>Xbox Splitter:</strong> 1×4 HDMI splitter to feed the Xbox signal to all switches</li>
+            <li><strong>Laptop Dock:</strong> USB-C dock with 3 HDMI outputs</li>
+            <li><strong>Desktop Adapters:</strong> DisplayPort to HDMI for additional desktop outputs</li>
+        </ul>
+
+        <h2 class="fade d12">Wiring Overview</h2>
+        <p class="fade d13">
+            Total: 11 HDMI cables. Each switch receives inputs from Desktop, Laptop, and Xbox (via splitter), then outputs directly to its monitor.
+        </p>
+
+        <div class="quote fade d14">
+            This architecture provides true flexibility: any device on any monitor, independently, without cable swapping.
+        </div>
+
+        <p class="fade d15">
+            <a href="../../../../clientIndex.html" class="back-link">← Back to Project Overview</a>
+        </p>
+    </div>
+
+    <script>
+        (function(){
+            const KEY = 'mm_animations_played';
+            function getStore(){ try{ return JSON.parse(sessionStorage.getItem(KEY))||{} }catch{ return {}; } }
+            function setStore(s){ sessionStorage.setItem(KEY, JSON.stringify(s)); }
+            function genId(el,i){
+                if(el.dataset.animId) return el.dataset.animId;
+                const path = location.pathname;
+                const base = (el.id || el.className || el.tagName).toString().replace(/\s+/g,'_');
+                const raw = `${path}::${base}::${i}`;
+                const id = btoa(encodeURIComponent(raw));
+                el.dataset.animId = id;
+                return id;
+            }
+            document.addEventListener('DOMContentLoaded', ()=>{
+                const store = getStore();
+                document.querySelectorAll('.fade').forEach((el,i)=>{
+                    const id = genId(el,i);
+                    if(store[id]){
+                        el.classList.add('no-animation');
+                    } else {
+                        const s = getStore(); s[id]=true; setStore(s);
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

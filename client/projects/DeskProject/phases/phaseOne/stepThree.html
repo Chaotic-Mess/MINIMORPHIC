@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Step Three: Desk Frame Assembly - 2026 Desk Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../../../styles/phaseStyles.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <a class="kicker fade" href="../../../../clientIndex.html">2026 Desk Project / Phase One / Step Three</a>
+        <h1 class="fade d2">Desk Frame Assembly</h1>
+
+        <p class="fade d3">
+            Building the physical foundation: an L-shaped electric sit/stand desk that provides ergonomic adjustability and ample space for the multi-monitor setup.
+        </p>
+
+        <h2 class="fade d4">Desk Specifications</h2>
+        <ul class="fade d5">
+            <li><strong>Shape:</strong> L-shaped corner configuration</li>
+            <li><strong>Height Adjustment:</strong> Electric sit/stand mechanism</li>
+            <li><strong>Surface Area:</strong> Sufficient for 3 monitors + peripherals</li>
+            <li><strong>Weight Capacity:</strong> Support for monitors, PC, and accessories</li>
+        </ul>
+
+        <h2 class="fade d6">Key Features</h2>
+        <ul class="fade d7">
+            <li>Stable L-shape for corner placement</li>
+            <li>Smooth electric height adjustment</li>
+            <li>Cable management channels built-in</li>
+            <li>Modular design for future modifications</li>
+        </ul>
+
+        <h2 class="fade d8">Assembly Considerations</h2>
+        <p class="fade d9">
+            Follow manufacturer instructions carefully. Ensure the desk is level and stable before mounting monitors. Plan cable routing paths during assembly.
+        </p>
+
+        <div class="quote fade d10">
+            A solid foundation is essential for the clean aesthetic and reliable operation of the entire system.
+        </div>
+
+        <p class="fade d11">
+            <a href="../../../../clientIndex.html" class="back-link">← Back to Project Overview</a>
+        </p>
+    </div>
+
+    <script>
+        (function(){
+            const KEY = 'mm_animations_played';
+            function getStore(){ try{ return JSON.parse(sessionStorage.getItem(KEY))||{} }catch{ return {}; } }
+            function setStore(s){ sessionStorage.setItem(KEY, JSON.stringify(s)); }
+            function genId(el,i){
+                if(el.dataset.animId) return el.dataset.animId;
+                const path = location.pathname;
+                const base = (el.id || el.className || el.tagName).toString().replace(/\s+/g,'_');
+                const raw = `${path}::${base}::${i}`;
+                const id = btoa(encodeURIComponent(raw));
+                el.dataset.animId = id;
+                return id;
+            }
+            document.addEventListener('DOMContentLoaded', ()=>{
+                const store = getStore();
+                document.querySelectorAll('.fade').forEach((el,i)=>{
+                    const id = genId(el,i);
+                    if(store[id]){
+                        el.classList.add('no-animation');
+                    } else {
+                        const s = getStore(); s[id]=true; setStore(s);
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

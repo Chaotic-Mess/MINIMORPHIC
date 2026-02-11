@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Step Four: Cable Management Setup - 2026 Desk Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../../../styles/phaseStyles.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <a class="kicker fade" href="../../../../clientIndex.html">2026 Desk Project / Phase One / Step Four</a>
+        <h1 class="fade d2">Cable Management Setup</h1>
+
+        <p class="fade d3">
+            Implementing hidden cable routing and mounting the AV switches/splitter under the desk for a clean, professional appearance.
+        </p>
+
+        <h2 class="fade d4">Cable Routing Strategy</h2>
+        <ul class="fade d5">
+            <li>Use desk's built-in cable channels</li>
+            <li>Install cable trays or conduits as needed</li>
+            <li>Label all cables for easy troubleshooting</li>
+            <li>Ensure cables have slack for height adjustment</li>
+        </ul>
+
+        <h2 class="fade d6">Component Mounting</h2>
+        <ul class="fade d7">
+            <li>Mount HDMI switches under desk surface</li>
+            <li>Secure splitter in accessible location</li>
+            <li>Use adhesive mounts or cable ties</li>
+            <li>Ensure components are protected from dust/debris</li>
+        </ul>
+
+        <h2 class="fade d8">Aesthetic Goals</h2>
+        <p class="fade d9">
+            Minimal visible wiring, clean desk surface, professional setup that doesn't detract from the bedroom environment.
+        </p>
+
+        <div class="quote fade d10">
+            Good cable management isn't just about looks - it ensures reliability and ease of maintenance.
+        </div>
+
+        <p class="fade d11">
+            <a href="../../../../clientIndex.html" class="back-link">← Back to Project Overview</a>
+        </p>
+    </div>
+
+    <script>
+        (function(){
+            const KEY = 'mm_animations_played';
+            function getStore(){ try{ return JSON.parse(sessionStorage.getItem(KEY))||{} }catch{ return {}; } }
+            function setStore(s){ sessionStorage.setItem(KEY, JSON.stringify(s)); }
+            function genId(el,i){
+                if(el.dataset.animId) return el.dataset.animId;
+                const path = location.pathname;
+                const base = (el.id || el.className || el.tagName).toString().replace(/\s+/g,'_');
+                const raw = `${path}::${base}::${i}`;
+                const id = btoa(encodeURIComponent(raw));
+                el.dataset.animId = id;
+                return id;
+            }
+            document.addEventListener('DOMContentLoaded', ()=>{
+                const store = getStore();
+                document.querySelectorAll('.fade').forEach((el,i)=>{
+                    const id = genId(el,i);
+                    if(store[id]){
+                        el.classList.add('no-animation');
+                    } else {
+                        const s = getStore(); s[id]=true; setStore(s);
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

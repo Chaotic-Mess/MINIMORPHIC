@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Step Two: Hardware Procurement - 2026 Desk Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../../../styles/phaseStyles.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <a class="kicker fade" href="../../../../clientIndex.html">2026 Desk Project / Phase One / Step Two</a>
+        <h1 class="fade d2">Hardware Procurement</h1>
+
+        <p class="fade d3">
+            With the architecture finalized, it's time to acquire the necessary hardware components. This step focuses on purchasing the HDMI switches, splitter, cables, and adapters needed for the system.
+        </p>
+
+        <h2 class="fade d4">Required Components</h2>
+        <ul class="fade d5">
+            <li><strong>HDMI Switches (x3):</strong> 3-port manual HDMI switches, one for each monitor [LINK HERE]</li>
+            <li><strong>HDMI Splitter:</strong> 1-in, 4-out HDMI splitter for distributing Xbox signal [LINK HERE]</li>
+            <li><strong>HDMI Cables:</strong> High-quality HDMI cables (various lengths for clean routing) [LINK HERE]</li>
+            <li><strong>DisplayPort to HDMI Adapters (x2):</strong> For desktop DisplayPort outputs</li>
+            <li><strong>USB-C Laptop Dock:</strong> With 3 HDMI outputs for laptop connectivity</li>
+        </ul>
+
+        <h2 class="fade d6">Procurement Strategy</h2>
+        <p class="fade d7">
+            Prioritize reliable brands with good reviews for HDMI 2.0 compatibility and stable 4K@60Hz performance. Look for switches with manual buttons rather than IR remotes for reliability.
+        </p>
+
+        <h2 class="fade d8">Budget Considerations</h2>
+        <p class="fade d9">
+            This approach should cost significantly less than a professional AV matrix while providing the same functionality. Total estimated cost: $100-200 for all switching hardware.
+        </p>
+
+        <div class="quote fade d10">
+            Quality HDMI components are crucial - cheap switches can introduce signal degradation or compatibility issues.
+        </div>
+
+        <p class="fade d11">
+            <a href="../../../../clientIndex.html" class="back-link">← Back to Project Overview</a>
+        </p>
+    </div>
+
+    <script>
+        (function(){
+            const KEY = 'mm_animations_played';
+            function getStore(){ try{ return JSON.parse(sessionStorage.getItem(KEY))||{} }catch{ return {}; } }
+            function setStore(s){ sessionStorage.setItem(KEY, JSON.stringify(s)); }
+            function genId(el,i){
+                if(el.dataset.animId) return el.dataset.animId;
+                const path = location.pathname;
+                const base = (el.id || el.className || el.tagName).toString().replace(/\s+/g,'_');
+                const raw = `${path}::${base}::${i}`;
+                const id = btoa(encodeURIComponent(raw));
+                el.dataset.animId = id;
+                return id;
+            }
+            document.addEventListener('DOMContentLoaded', ()=>{
+                const store = getStore();
+                document.querySelectorAll('.fade').forEach((el,i)=>{
+                    const id = genId(el,i);
+                    if(store[id]){
+                        el.classList.add('no-animation');
+                    } else {
+                        const s = getStore(); s[id]=true; setStore(s);
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<title>ONE MOMENT</title>
+
+<script>
+    const session = localStorage.getItem("mm_session");
+    if (session) {
+        try {
+            const parsedSession = JSON.parse(session);
+            const sessionAge = Date.now() - parsedSession.time;
+            if (sessionAge < 24 * 60 * 60 * 1000) {
+                window.location = "client/clientIndex.html";
+            } else {
+                // Session expired, remove it
+                localStorage.removeItem("mm_session");
+                window.location = "login/loginIndex.html";
+            }
+        } catch (e) {
+            // Invalid session, remove it
+            localStorage.removeItem("mm_session");
+            window.location = "login/loginIndex.html";
+        }
+    }else {
+        window.location = "login/loginIndex.html";
+    }
+</script>
+
+</html>

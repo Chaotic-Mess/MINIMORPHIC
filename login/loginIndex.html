@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>MINIMORPHIC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../styles/loginStyles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="bar b1">
+                <div class="eyes">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+            </div>
+            <div class="bar b2">
+                <div class="eyes">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+            </div>
+            <div class="bar b3">
+                <div class="eyes">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+            </div>
+            <div class="bar b4">
+                <div class="eyes">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="box">
+                <!-- Login Form -->
+                <div id="loginForm">
+                    <h1>MINIMORPHIC</h1>
+                    <div class="subtitle">Welcome back</div>
+
+                    <div class="form-group">
+                        <label for="loginUser">Username</label>
+                        <input id="loginUser" type="text" placeholder="Enter your username" autocomplete="username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPass">Password</label>
+                        <div class="row">
+                            <input id="loginPass" type="password" placeholder="Enter your password"
+                                autocomplete="current-password">
+                            <div class="toggle" id="loginPeek">SHOW</div>
+                        </div>
+                    </div>
+
+                    <button onclick="login()">Sign In</button>
+
+                    <div class="divider">or</div>
+
+                    <button class="secondary-btn" onclick="showCreateAccount()">Create Account</button>
+
+                    <div class="msg" id="loginMsg"></div>
+                </div>
+
+                <!-- Create Account Form -->
+                <div id="createForm" style="display: none;">
+                    <h1>MINIMORPHIC</h1>
+                    <div class="subtitle">Create your account</div>
+
+                    <div class="form-group">
+                        <label for="createUser">Username</label>
+                        <input id="createUser" type="text" placeholder="Choose a username" autocomplete="username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="createEmail">Email</label>
+                        <input id="createEmail" type="email" placeholder="your@email.com" autocomplete="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="createPass">Password</label>
+                        <div class="row">
+                            <input id="createPass" type="password" placeholder="Create a password"
+                                autocomplete="new-password">
+                            <div class="toggle" id="createPeek">SHOW</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPass">Confirm Password</label>
+                        <input id="confirmPass" type="password" placeholder="Confirm your password"
+                            autocomplete="new-password">
+                    </div>
+
+                    <div class="password-requirements">
+                        <strong>Password must contain:</strong>
+                        <ul id="requirements">
+                            <li id="req-length">At least 8 characters</li>
+                            <li id="req-upper">One uppercase letter</li>
+                            <li id="req-lower">One lowercase letter</li>
+                            <li id="req-number">One number</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="createAccount()">Create Account</button>
+
+                    <div class="back-link">
+                        <a href="#" onclick="showLogin(); return false;">Already have an account? Sign in</a>
+                    </div>
+
+                    <div class="msg" id="createMsg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="loginMain.js"> </script>
+
+</body>
+
+</html>

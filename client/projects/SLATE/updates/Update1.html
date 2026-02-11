@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Update: Founding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../../styles/updateStyles.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <a class="kicker fade" href="../../index.html">Minimorphic / Update One</a>
+        <h1 class="fade d2">Founding</h1>
+
+        <p class="fade d3">
+            On January 30th, 2026, at 11:50pm, MINIMORPHIC was born. A simple idea took root: to build SLATE, a custom
+            laptop
+            from the ground up. This is the beginning of a journey defined by innovation, experimentation,
+        </p>
+        <p class="fade d4">
+            and relentless pursuit of a vision. No corporate gloss, just raw progress and the occasional breakthrough.
+        </p>
+
+        <div class="quote fade d5">
+            MINIMORPHIC is not just a project; it’s a commitment to creating something different, something better.
+            Welcome to the journey.
+        </div>
+    </div>
+    <script>
+        (function(){
+            const KEY = 'mm_animations_played';
+            function getStore(){ try{ return JSON.parse(sessionStorage.getItem(KEY))||{} }catch{ return {}; } }
+            function setStore(s){ sessionStorage.setItem(KEY, JSON.stringify(s)); }
+            function genId(el,i){
+                if(el.dataset.animId) return el.dataset.animId;
+                const path = location.pathname;
+                const base = (el.id || el.className || el.tagName).toString().replace(/\s+/g,'_');
+                const raw = `${path}::${base}::${i}`;
+                const id = btoa(encodeURIComponent(raw));
+                el.dataset.animId = id;
+                return id;
+            }
+            document.addEventListener('DOMContentLoaded', ()=>{
+                const store = getStore();
+                document.querySelectorAll('.fade').forEach((el,i)=>{
+                    const id = genId(el,i);
+                    if(store[id]){
+                        el.classList.add('no-animation');
+                    } else {
+                        const s = getStore(); s[id]=true; setStore(s);
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
