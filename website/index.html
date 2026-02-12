@@ -11,7 +11,7 @@
             const parsedSession = JSON.parse(session);
             const sessionAge = Date.now() - parsedSession.time;
             if (sessionAge < 24 * 60 * 60 * 1000) {
-                window.location = "client/clientIndex.html";
+                window.location = "transition/transitionIndex.html";
             } else {
                 // Session expired, remove it
                 localStorage.removeItem("mm_session");
