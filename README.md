@@ -1,10 +1,6 @@
-# MINIMORPHIC
-
-This is
-
 ![alt text](https://github.com/Chaotic-Mess/MINIMORPHIC/blob/main/website/client/branding/TextLogo.png "MINIMORPHIC")
 
-A place where I share my personal projects: where they are, the things I bought, the things I didn’t, the things I designed. CAD files, links, notes, and inspirations — all here in one repo.
+This is MINIMORPHIC, A place where I share my personal projects: where they are, the things I bought, the things I didn’t, the things I designed. CAD files, links, notes, and inspirations — all here in one repo.
 
 Not a company. Not a startup. Just me. And that’s okay.
 
@@ -21,4 +17,4 @@ Not a company. Not a startup. Just me. And that’s okay.
 - Use the project folders to find CAD, build notes, and links.
 - Nothing here is polished — it’s a record of what I built and why.
 
-Visit the site: [website/index.html](website/index.html)
+Visit the site: [HERE](https://chaotic-mess.github.io/MINIMORPHIC/website)
