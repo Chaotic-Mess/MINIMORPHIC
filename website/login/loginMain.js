@@ -306,39 +306,26 @@ document.addEventListener("keypress", e => {
     }
 });
 
-// Guest sign-in: create a lightweight guest session and redirect
+// Guest sign-in
 function guestSignIn() {
     const msgEl = document.getElementById("loginMsg");
     const session = {
-        user: "Guest",
+        user: "guest",
         guest: true,
         time: Date.now()
     };
 
     try {
         localStorage.setItem("mm_session", JSON.stringify(session));
-    } catch (e) {
-        // ignore localStorage errors
+        if (msgEl) {
+            msgEl.className = "msg success";
+            msgEl.textContent = "Continuing as guest...";
+        }
+        setTimeout(() => window.location = "../client/clientIndex.html", 300);
+    } catch (err) {
+        if (msgEl) {
+            msgEl.className = "msg error";
+            msgEl.textContent = "Unable to continue as guest.";
+        }
     }
-
-    mode = "success";
-    if (msgEl) {
-        msgEl.className = "msg success";
-        msgEl.textContent = "Continuing as Guest...";
-    }
-
-    bars.forEach((b, i) => {
-        setTimeout(() => {
-            b.style.transform = "translateY(-16px) scale(1.08)";
-        }, i * 70);
-    });
-
-    setTimeout(() => window.location = "../client/clientIndex.html", 700);
-}
-
-// Expose for inline `onclick` handlers
-try {
-    window.guestSignIn = guestSignIn;
-} catch (e) {
-    // ignore if window is not available
 }
