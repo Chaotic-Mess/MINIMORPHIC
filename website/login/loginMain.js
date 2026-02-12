@@ -5,7 +5,7 @@ if (session) {
         const parsedSession = JSON.parse(session);
         const sessionAge = Date.now() - parsedSession.time;
         if (sessionAge < 24 * 60 * 60 * 1000) {
-            window.location = "../client/clientIndex.html";
+            window.location = "../transition/transitionIndex.html";
         } else {
             // Session expired, remove it 
             localStorage.removeItem("mm_session");
@@ -200,7 +200,7 @@ async function login() {
                 }, i * 70);
             });
 
-            setTimeout(() => window.location = "../client/clientIndex.html", 800);
+            setTimeout(() => window.location = "../transition/transitionIndex.html", 800);
 
         } else {
             mode = "error";
@@ -321,7 +321,7 @@ function guestSignIn() {
             msgEl.className = "msg success";
             msgEl.textContent = "Continuing as guest...";
         }
-        setTimeout(() => window.location = "../client/clientIndex.html", 300);
+        setTimeout(() => window.location = "../transition/transitionIndex.html", 300);
     } catch (err) {
         if (msgEl) {
             msgEl.className = "msg error";

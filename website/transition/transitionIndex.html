@@ -3,62 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MINIMORPHIC - Transition</title>
+  <title>MINIMORPHIC</title>
   <link rel="stylesheet" href="../styles/transitionStyle.css">
 </head>
 <body>
-  
-  <!-- Loading Animation -->
-  <div class="loader" id="loader">
-    <div class="loader-rings">
-      <div class="ring ring-1"></div>
-      <div class="ring ring-2"></div>
-      <div class="ring ring-3"></div>
-    </div>
-    <div class="loader-text">INITIALIZING</div>
+
+  <!-- Page-exit white-out -->
+  <div id="exitOverlay"></div>
+
+  <!-- ── Intro animation ── -->
+  <div id="intro">
+    <div class="intro-ring"></div>
+    <div class="intro-ring"></div>
+    <div class="intro-ring"></div>
+    <div class="intro-title">MINIMORPHIC</div>
+    <div class="intro-sub">SELECT YOUR PROJECT</div>
+    <div class="intro-bar-track"><div class="intro-bar-fill"></div></div>
   </div>
 
-  <!-- Main Content -->
-  <div class="main-container" id="mainContainer">
-    <div class="header">
-      <div class="logo">MINIMORPHIC</div>
-      <div class="tagline">Select your destination</div>
+  <!-- ── Hub ── -->
+  <div id="hub">
+
+    <!-- User badge & logout -->
+    <div class="hub-user" id="userBadge"></div>
+    <button class="hub-logout" id="logoutBtn">[ End Session ]</button>
+
+    <!-- Header -->
+    <div class="hub-header">
+      <div class="hub-logo">MINIMORPHIC</div>
+      <div class="hub-tagline">// choose a project</div>
     </div>
 
-    <div class="radial-menu">
-      <!-- Decorative circles -->
-      <div class="deco-circle deco-1"></div>
-      <div class="deco-circle deco-2"></div>
+    <!-- Radial selector — cards injected by JS -->
+    <div class="selector" id="selector">
+      <!-- Orbit rings -->
+      <div class="orbit orbit-1"></div>
+      <div class="orbit orbit-2"></div>
+      <div class="orbit orbit-3"></div>
 
-      <!-- Connecting lines -->
-      <div class="connector connector-left"></div>
-      <div class="connector connector-right"></div>
-
-      <!-- Menu Items -->
-      <div class="menu-item" id="menu-0" data-link="../client/clientIndex.html">
-        <div class="menu-item-title">SLATE</div>
-        <div class="menu-item-desc">Building a Custom Laptop</div>
+      <!-- Center -->
+      <div class="hub-circle" id="hubCircle">
+        <span class="hub-circle-label">OPEN</span>
       </div>
 
-      <div class="menu-item" id="menu-1" data-link="#">
-        <div class="menu-item-title">L-Corner Desk</div>
-        <div class="menu-item-desc">Building and Designing an Endgame Desk. Because behind every man, there is a massive amount of hidden cable management. Not anymore.</div>
-      </div>
-
-      <!-- Center Circle -->
-      <div class="center-circle">
-        <div class="center-icon">SELECT</div>
-      </div>
+      <!-- Connectors injected by JS -->
     </div>
 
+    <!-- Preview panel (below selector) -->
+    <div class="preview" id="preview">
+      <div class="preview-title" id="previewTitle"></div>
+      <div class="preview-desc" id="previewDesc"></div>
+      <button class="preview-cta" id="previewCta">OPEN PROJECT &rarr;</button>
+    </div>
+
+    <!-- Keyboard hints -->
     <div class="instructions">
-      Use <span class="key-hint">←</span> <span class="key-hint">→</span> arrow keys or click to navigate
-      <br>
-      Press <span class="key-hint">Enter</span> to confirm selection
+      <span><span class="kbd">&larr;</span><span class="kbd">&rarr;</span> navigate</span>
+      <span><span class="kbd">Enter</span> open</span>
     </div>
   </div>
 
-  <script src="transitionMain.js"> </script>
-
+  <script src="transitionMain.js"></script>
 </body>
 </html>
