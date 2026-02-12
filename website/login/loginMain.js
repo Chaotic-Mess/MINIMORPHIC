@@ -305,3 +305,33 @@ document.addEventListener("keypress", e => {
         }
     }
 });
+
+// Guest sign-in: create a lightweight guest session and redirect
+function guestSignIn() {
+    const msgEl = document.getElementById("loginMsg");
+    const session = {
+        user: "Guest",
+        guest: true,
+        time: Date.now()
+    };
+
+    try {
+        localStorage.setItem("mm_session", JSON.stringify(session));
+    } catch (e) {
+        // ignore localStorage errors
+    }
+
+    mode = "success";
+    if (msgEl) {
+        msgEl.className = "msg success";
+        msgEl.textContent = "Continuing as Guest...";
+    }
+
+    bars.forEach((b, i) => {
+        setTimeout(() => {
+            b.style.transform = "translateY(-16px) scale(1.08)";
+        }, i * 70);
+    });
+
+    setTimeout(() => window.location = "../client/clientIndex.html", 700);
+}
