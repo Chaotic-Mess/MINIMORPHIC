@@ -1,24 +1,24 @@
 # MINIMORPHIC
 
-Design-led modular computing.
+This is
 
-This repository contains the core development assets for the Minimorphic platform — a minimalist, future-forward laptop architecture built around precision industrial design and flush expansion modules.
+![alt text](https://github.com/Chaotic-Mess/MINIMORPHIC/blob/main/website/client/branding/TextLogo.png "MINIMORPHIC")
 
-It brings together mechanical design, electronics, firmware, and system documentation in a unified workspace for developing the Minimorphic ecosystem.
+A place where I share my personal projects: where they are, the things I bought, the things I didn’t, the things I designed. CAD files, links, notes, and inspirations — all here in one repo.
 
-**Project site:** [https://minimorphic.github.io](https://chaotic-mess.github.io/MINIMORPHIC/website/index.html)
+Not a company. Not a startup. Just me. And that’s okay.
 
-## Scope
+## What’s in (and will be) this repo 
 
-- Industrial design (CAD, enclosure systems)
-- Electronics (PCB designs, schematics)
-- Firmware and low-level software
-- Expansion module architecture
-- Prototyping files and research
-- System documentation
+- Projects: project folders with notes, phases, and updates
+- CAD: design files and exports
+- Firmware & code: drivers, sketches, and tools
+- References: links, research, and inspiration
 
-## Philosophy
+## How I use this
 
-Minimorphic explores computing as a physical design system — where hardware components behave as modular forms that integrate seamlessly into a cohesive object.
+- I log progress in project update posts.
+- Use the project folders to find CAD, build notes, and links.
+- Nothing here is polished — it’s a record of what I built and why.
 
-Minimal form. Maximum function. Continuous evolution.
+Visit the site: [website/index.html](website/index.html)

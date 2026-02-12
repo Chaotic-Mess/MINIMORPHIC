@@ -1,9 +1,9 @@
 :root {
-    --bg: #ffffff;
-    --text: #121212;
-    --muted: #7a7a7a;
-    --hair: #ececec;
-    --accent: #ff4f7a;
+    --bg: #f5e6d3;
+    --text: #2a2a2a;
+    --muted: #a89080;
+    --hair: #e8ddd0;
+    --accent: #d4a574;
     --max: 760px;
 }
 
@@ -96,7 +96,7 @@ li {
 
 .accentLine {
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 79, 122, .55), transparent);
+    background: linear-gradient(90deg, transparent, rgba(212, 165, 116, .55), transparent);
     margin: 44px 0;
 }
 
@@ -110,7 +110,7 @@ body::before {
     transform: translateX(-50%);
     width: 820px;
     height: 420px;
-    background: radial-gradient(circle, rgba(255, 79, 122, .12), transparent 70%);
+    background: radial-gradient(circle, rgba(212, 165, 116, .12), transparent 70%);
     filter: blur(60px);
     pointer-events: none;
     z-index: -1;

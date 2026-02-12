@@ -5,15 +5,15 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
 :root{
-  --bg:       #111113;
-  --surface:  #1a1a1e;
-  --border:   #2e2e34;
+  --bg:       #f5e6d3;
+  --surface:  #fdfbf8;
+  --border:   #e8ddd0;
   --accent:   #d4a574;
   --accent-g: #b7dfaa;
   --accent-b: #9ecde6;
   --accent-r: #f4a6b4;
-  --text:     #e8e4df;
-  --muted:    #777;
+  --text:     #3c3c3c;
+  --muted:    #a89080;
   --radius:   18px;
   --font:     'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
 }

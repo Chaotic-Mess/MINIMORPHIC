@@ -25,7 +25,7 @@ const PROJECTS = [
   {
     id:    'slate',
     title: 'SLATE',
-    desc:  'Building a custom laptop from scratch. No corporate polish — just honest progress.',
+    desc:  'My custom laptop build. Designing the whole thing from scratch.',
     icon:  '💻',
     status:'active',
     url:   '../client/projects/SLATE/hub.html'
@@ -33,7 +33,7 @@ const PROJECTS = [
   {
     id:    'desk',
     title: '2026 Desk',
-    desc:  'An L-shaped sit/stand desk with advanced AV control. Clean cables, flexible switching.',
+    desc:  'L-shaped sit/stand desk with HDMI switching for three monitors.',
     icon:  '🖥️',
     status:'active',
     url:   '../client/projects/DeskProject/hub.html'
