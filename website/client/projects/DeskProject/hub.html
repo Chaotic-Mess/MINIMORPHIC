@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
     <style>
         .back-bar{
             position:fixed;top:0;left:0;right:0;
@@ -38,7 +38,7 @@
     <div class="grid-bg"></div>
 
     <div class="back-bar">
-        <button class="back-btn" onclick="window.location.href='../../transition/transitionIndex.html'">&larr; Back to Hub</button>
+        <button class="back-btn" onclick="window.location.href='../../../transition/transitionIndex.html'">&larr; Back to Hub</button>
         <span class="back-user" id="userLabel"></span>
         <button class="logout-btn" onclick="mmLogout()">[ End Session ]</button>
     </div>
@@ -46,7 +46,7 @@
     <div class="container">
         <header>
             <div class="logo-wrapper" style="transform: rotate(-1deg);">
-                <img src="../branding/TextLogo.png" alt="MINIMORPHIC">
+                <img src="../../branding/TextLogo.png" alt="MINIMORPHIC">
             </div>
             <div class="tagline">// building something different</div>
         </header>
@@ -94,17 +94,17 @@
     <script>
     (function(){
         const raw = localStorage.getItem('mm_session');
-        if(!raw){ window.location.href='../../index.html'; return; }
+        if(!raw){ window.location.href='../../../index.html'; return; }
         try{
             const s = JSON.parse(raw);
             if(!s.time || Date.now()-s.time > 12*60*60*1000){
                 localStorage.removeItem('mm_session');
-                window.location.href='../../index.html'; return;
+                window.location.href='../../../index.html'; return;
             }
             window.MM_USER = s.user;
         }catch{
             localStorage.removeItem('mm_session');
-            window.location.href='../../index.html';
+            window.location.href='../../../index.html';
         }
     })();
     </script>
@@ -257,7 +257,7 @@
         sessionStorage.removeItem('mm_animations_played');
         sessionStorage.removeItem('mm_intro_played');
         localStorage.removeItem('mm_current_project');
-        window.location.href = '../../index.html';
+        window.location.href = '../../../index.html';
     }
     </script>
 </body>
