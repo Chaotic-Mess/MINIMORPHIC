@@ -335,3 +335,10 @@ function guestSignIn() {
 
     setTimeout(() => window.location = "../client/clientIndex.html", 700);
 }
+
+// Expose for inline `onclick` handlers
+try {
+    window.guestSignIn = guestSignIn;
+} catch (e) {
+    // ignore if window is not available
+}
