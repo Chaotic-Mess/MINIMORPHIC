@@ -1,4 +1,4 @@
-![alt text](https://github.com/Chaotic-Mess/MINIMORPHIC/blob/main/website/client/branding/TextLogo.png "MINIMORPHIC")
+![alt text](https://github.com/Chaotic-Mess/MINIMORPHIC/blob/main/website/client/branding/TextLogoNoBG.png "MINIMORPHIC")
 
 This is MINIMORPHIC, A place where I share my personal projects: where they are, the things I bought, the things I didn’t, the things I designed. CAD files, links, notes, and inspirations — all here in one repo.
 
