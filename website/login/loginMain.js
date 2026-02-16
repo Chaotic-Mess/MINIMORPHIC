@@ -2,20 +2,19 @@
 //  MINIMORPHIC — Login Page [JS]
 //  ===================================
 
+const API_URL = "https://script.google.com/macros/s/AKfycbwEokJ3RVL6IKByVeuC5ukEegO2gxH6d06iAjhKGIJdW1-xEkU-rOgERxiIAW3WfbEZNw/exec";
+
 // Check if user is already logged in
 const session = localStorage.getItem("mm_session");
 if (session) {
     try {
-        const parsedSession = JSON.parse(session);
-        const sessionAge = Date.now() - parsedSession.time;
-        if (sessionAge < 24 * 60 * 60 * 1000) {
+        const s = JSON.parse(session);
+        if (s.time && Date.now() - s.time < 24 * 60 * 60 * 1000) {
             window.location = "../transition/transitionIndex.html";
         } else {
-            // Session expired, remove it 
             localStorage.removeItem("mm_session");
         }
-    } catch (e) {
-        // Invalid session, remove it
+    } catch {
         localStorage.removeItem("mm_session");
     }
 }
@@ -29,7 +28,6 @@ let peeking = false;
 // Eye tracking
 document.addEventListener("mousemove", e => {
     if (mode !== "idle" && mode !== "tracking") return;
-
     eyes.forEach(eye => {
         const rect = eye.getBoundingClientRect();
         const dx = e.clientX - (rect.left + rect.width / 2);
@@ -41,7 +39,7 @@ document.addEventListener("mousemove", e => {
     });
 });
 
-// Login form interactions
+// Login form focus
 document.getElementById("loginUser")?.addEventListener("focus", () => {
     mode = "typingUser";
     bars.forEach(b => b.style.transform = "translateY(-10px) scale(1.05)");
@@ -55,10 +53,20 @@ document.getElementById("loginPass")?.addEventListener("focus", () => {
     }
 });
 
-// Create form interactions
+// Create form focus
 document.getElementById("createUser")?.addEventListener("focus", () => {
     mode = "typingUser";
     bars.forEach(b => b.style.transform = "translateY(-10px) scale(1.05)");
+});
+
+document.getElementById("createDisplay")?.addEventListener("focus", () => {
+    mode = "typingUser";
+    bars.forEach(b => b.style.transform = "translateY(-8px) scale(1.03)");
+});
+
+document.getElementById("createEmail")?.addEventListener("focus", () => {
+    mode = "typingUser";
+    bars.forEach(b => b.style.transform = "translateY(-8px) scale(1.03)");
 });
 
 document.getElementById("createPass")?.addEventListener("focus", () => {
@@ -67,11 +75,6 @@ document.getElementById("createPass")?.addEventListener("focus", () => {
         eyes.forEach(e => e.style.transform = "translateX(-6px)");
         bars.forEach(b => b.style.transform = "translateY(6px) scale(0.97)");
     }
-});
-
-document.getElementById("createEmail")?.addEventListener("focus", () => {
-    mode = "typingUser";
-    bars.forEach(b => b.style.transform = "translateY(-8px) scale(1.03)");
 });
 
 document.getElementById("confirmPass")?.addEventListener("focus", () => {
@@ -94,10 +97,8 @@ document.getElementById("loginPeek").onclick = () => {
     peeking = !peeking;
     const passInput = document.getElementById("loginPass");
     const peek = document.getElementById("loginPeek");
-
     passInput.type = peeking ? "text" : "password";
     peek.textContent = peeking ? "HIDE" : "SHOW";
-
     if (peeking) {
         mode = "peeking";
         eyes.forEach(e => e.style.transform = "translateX(5px)");
@@ -112,10 +113,8 @@ document.getElementById("createPeek").onclick = () => {
     peeking = !peeking;
     const passInput = document.getElementById("createPass");
     const peek = document.getElementById("createPeek");
-
     passInput.type = peeking ? "text" : "password";
     peek.textContent = peeking ? "HIDE" : "SHOW";
-
     if (peeking) {
         mode = "peeking";
         eyes.forEach(e => e.style.transform = "translateX(5px)");
@@ -134,21 +133,13 @@ setInterval(() => {
     });
 }, 60);
 
-// Password validation
+// Password validation (live)
 document.getElementById("createPass")?.addEventListener("input", e => {
-    const password = e.target.value;
-
-    const checks = {
-        length: password.length >= 8,
-        upper: /[A-Z]/.test(password),
-        lower: /[a-z]/.test(password),
-        number: /[0-9]/.test(password)
-    };
-
-    document.getElementById("req-length").className = checks.length ? "valid" : "";
-    document.getElementById("req-upper").className = checks.upper ? "valid" : "";
-    document.getElementById("req-lower").className = checks.lower ? "valid" : "";
-    document.getElementById("req-number").className = checks.number ? "valid" : "";
+    const pw = e.target.value;
+    document.getElementById("req-length").className = pw.length >= 8 ? "valid" : "";
+    document.getElementById("req-upper").className = /[A-Z]/.test(pw) ? "valid" : "";
+    document.getElementById("req-lower").className = /[a-z]/.test(pw) ? "valid" : "";
+    document.getElementById("req-number").className = /[0-9]/.test(pw) ? "valid" : "";
 });
 
 // Form switching
@@ -166,76 +157,76 @@ function showLogin() {
     mode = "idle";
 }
 
-// Login function
+// ---- LOGIN ----
 async function login() {
-    const username = document.getElementById("loginUser").value;
+    const identifier = document.getElementById("loginUser").value.trim();
     const password = document.getElementById("loginPass").value;
     const msgEl = document.getElementById("loginMsg");
 
-    if (!username || !password) {
+    if (!identifier || !password) {
         msgEl.className = "msg error";
         msgEl.textContent = "Please fill in all fields";
         return;
     }
 
     try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbwEokJ3RVL6IKByVeuC5ukEegO2gxH6d06iAjhKGIJdW1-xEkU-rOgERxiIAW3WfbEZNw/exec", {
+        const res = await fetch(API_URL, {
             method: "POST",
-            body: JSON.stringify({ username, password, action: "login" })
+            body: JSON.stringify({ action: "login", identifier, password })
         });
-
         const data = await res.json();
 
         if (data.success) {
-            const session = {
-                user: username,
+            localStorage.setItem("mm_session", JSON.stringify({
+                user: data.user,
+                displayName: data.displayName,
                 time: Date.now()
-            };
-
-            localStorage.setItem("mm_session", JSON.stringify(session));
+            }));
 
             mode = "success";
             msgEl.className = "msg success";
             msgEl.textContent = "Access granted! Redirecting...";
-
             bars.forEach((b, i) => {
-                setTimeout(() => {
-                    b.style.transform = "translateY(-16px) scale(1.08)";
-                }, i * 70);
+                setTimeout(() => b.style.transform = "translateY(-16px) scale(1.08)", i * 70);
             });
-
             setTimeout(() => window.location = "../transition/transitionIndex.html", 800);
-
         } else {
             mode = "error";
             msgEl.className = "msg error";
             msgEl.textContent = data.message || "Invalid credentials";
-
             bars.forEach(b => b.style.transform = "translateY(12px) scale(0.95)");
-
-            setTimeout(() => {
-                bars.forEach(b => b.style.transform = "");
-                mode = "idle";
-            }, 700);
+            setTimeout(() => { bars.forEach(b => b.style.transform = ""); mode = "idle"; }, 700);
         }
-    } catch (err) {
+    } catch {
         msgEl.className = "msg error";
         msgEl.textContent = "Connection error. Please try again.";
     }
 }
 
-// Create account function
+// ---- CREATE ACCOUNT ----
 async function createAccount() {
-    const username = document.getElementById("createUser").value;
-    const email = document.getElementById("createEmail").value;
+    const username = document.getElementById("createUser").value.trim();
+    const displayName = document.getElementById("createDisplay").value.trim();
+    const email = document.getElementById("createEmail").value.trim();
     const password = document.getElementById("createPass").value;
     const confirmPassword = document.getElementById("confirmPass").value;
     const msgEl = document.getElementById("createMsg");
 
-    // Validation
-    if (!username || !email || !password || !confirmPassword) {
+    if (!username || !displayName || !email || !password || !confirmPassword) {
         msgEl.className = "msg error";
         msgEl.textContent = "Please fill in all fields";
+        return;
+    }
+
+    if (!/^[a-zA-Z0-9_]{3,20}$/.test(username)) {
+        msgEl.className = "msg error";
+        msgEl.textContent = "Username: 3-20 chars, letters/numbers/underscores only";
+        return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        msgEl.className = "msg error";
+        msgEl.textContent = "Please enter a valid email";
         return;
     }
 
@@ -245,88 +236,65 @@ async function createAccount() {
         return;
     }
 
-    const passwordValid =
-        password.length >= 8 &&
-        /[A-Z]/.test(password) &&
-        /[a-z]/.test(password) &&
-        /[0-9]/.test(password);
-
-    if (!passwordValid) {
+    const pwOk = password.length >= 8 && /[A-Z]/.test(password) && /[a-z]/.test(password) && /[0-9]/.test(password);
+    if (!pwOk) {
         msgEl.className = "msg error";
         msgEl.textContent = "Password does not meet requirements";
         return;
     }
 
-    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!emailValid) {
-        msgEl.className = "msg error";
-        msgEl.textContent = "Please enter a valid email";
-        return;
-    }
-
     try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbwEokJ3RVL6IKByVeuC5ukEegO2gxH6d06iAjhKGIJdW1-xEkU-rOgERxiIAW3WfbEZNw/exec", {
+        const res = await fetch(API_URL, {
             method: "POST",
-            body: JSON.stringify({ username, email, password, action: "create" })
+            body: JSON.stringify({ action: "create", username, displayName, email, password })
         });
-
         const data = await res.json();
 
         if (data.success) {
             mode = "success";
             msgEl.className = "msg success";
-            msgEl.textContent = "Check your email to verify your account.";
-
+            msgEl.textContent = data.message || "Check your email to verify your account.";
             bars.forEach((b, i) => {
-                setTimeout(() => {
-                    b.style.transform = "translateY(-16px) scale(1.08)";
-                }, i * 70);
+                setTimeout(() => b.style.transform = "translateY(-16px) scale(1.08)", i * 70);
             });
-
             setTimeout(() => {
                 showLogin();
                 document.getElementById("loginUser").value = username;
                 msgEl.textContent = "";
             }, 1500);
-
         } else {
             msgEl.className = "msg error";
             msgEl.textContent = data.message || "Account creation failed";
         }
-    } catch (err) {
+    } catch {
         msgEl.className = "msg error";
-        msgEl.textContent = "Connection error. Please try again." + err.message;
+        msgEl.textContent = "Connection error. Please try again.";
     }
 }
 
-// Allow Enter key to submit
+// Enter key
 document.addEventListener("keypress", e => {
     if (e.key === "Enter") {
-        if (document.getElementById("loginForm").style.display !== "none") {
-            login();
-        } else {
-            createAccount();
-        }
+        if (document.getElementById("loginForm").style.display !== "none") login();
+        else createAccount();
     }
 });
 
-// Guest sign-in
+// Guest
 function guestSignIn() {
     const msgEl = document.getElementById("loginMsg");
-    const session = {
-        user: "guest",
-        guest: true,
-        time: Date.now()
-    };
-
     try {
-        localStorage.setItem("mm_session", JSON.stringify(session));
+        localStorage.setItem("mm_session", JSON.stringify({
+            user: "guest",
+            guest: true,
+            time: Date.now()
+        }));
         if (msgEl) {
             msgEl.className = "msg success";
             msgEl.textContent = "Continuing as guest...";
         }
         setTimeout(() => window.location = "../transition/transitionIndex.html", 300);
-    } catch (err) {
+    } catch {
         if (msgEl) {
             msgEl.className = "msg error";
             msgEl.textContent = "Unable to continue as guest.";
