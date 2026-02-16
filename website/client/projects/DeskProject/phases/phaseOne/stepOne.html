@@ -14,42 +14,154 @@
         <h1 class="fade d2">System Architecture Design</h1>
 
         <p class="fade d3">
-            In this step, we finalized the core system architecture that will enable flexible AV control without the complexity and cost of a full matrix switcher.
+            In this step, we finalized the core system architecture that will enable flexible AV control without the complexity and cost of a full matrix switcher. This project will NOT use a 4×4 matrix OR a KVM. Instead, the system uses 3 independent HDMI switches (one per monitor), 1 HDMI splitter for the Xbox, 1 triple-HDMI laptop dock, and Desktop connected using HDMI + DisplayPort→HDMI adapters.
         </p>
 
-        <h2 class="fade d4">The Problem</h2>
+        <h2 class="fade d4">Goal</h2>
         <p class="fade d5">
+            Create an L-shaped electric sit/stand desk for the bedroom with clean cable management and flexible AV control for three monitors, an Xbox, a desktop, and a laptop.
+        </p>
+
+        <div class="quote fade d6">
+            Primary Objective: Allow any device to appear on any monitor without unplugging cables or having to constantly molest the back of a monitor to find the input buttons.
+        </div>
+
+        <h2 class="fade d7">Examples of Desired Functionality</h2>
+        <ul class="fade d8">
+            <li>Xbox on center screen, desktop on left/right</li>
+            <li>Laptop on all three screens</li>
+            <li>Desktop on all three</li>
+            <li>Any mix, per monitor</li>
+        </ul>
+
+        <h2 class="fade d9">The Problem</h2>
+        <p class="fade d10">
             Traditional setups require unplugging cables to switch devices between monitors. For gaming, work, and laptop use, this becomes tedious with multiple monitors.
         </p>
 
-        <h2 class="fade d6">The Solution</h2>
-        <p class="fade d7">
-            Use 3 independent HDMI switches (one per monitor) combined with a splitter for the Xbox. This allows each monitor to independently select its input source.
+        <h2 class="fade d11">The Solution</h2>
+        <p class="fade d12">
+            Use 3 independent HDMI switches (one per monitor) combined with a splitter for the Xbox. This allows each monitor to independently select its input source. This achieves the same functionality as a matrix at a much lower cost and with simpler setup.
         </p>
 
-        <h2 class="fade d8">Why Not a Matrix?</h2>
-        <p class="fade d9">
+        <h2 class="fade d13">Why Not a Matrix?</h2>
+        <p class="fade d14">
             While a 4×4 HDMI matrix would work, it costs significantly more and adds unnecessary complexity for our needs. The switch-based approach achieves the same functionality at a fraction of the cost.
         </p>
 
-        <h2 class="fade d10">Hardware Decisions</h2>
-        <ul class="fade d11">
-            <li><strong>HDMI Switches:</strong> 3-port switches for each monitor (Desktop, Laptop, Xbox inputs)</li>
-            <li><strong>Xbox Splitter:</strong> 1×4 HDMI splitter to feed the Xbox signal to all switches</li>
-            <li><strong>Laptop Dock:</strong> USB-C dock with 3 HDMI outputs</li>
-            <li><strong>Desktop Adapters:</strong> DisplayPort to HDMI for additional desktop outputs</li>
-        </ul>
+        <h2 class="fade d15">Core Concept</h2>
+        <p class="fade d16">
+            Each monitor gets its own input selector. Each monitor can independently choose between Desktop, Laptop, or Xbox.
 
-        <h2 class="fade d12">Wiring Overview</h2>
-        <p class="fade d13">
-            Total: 11 HDMI cables. Each switch receives inputs from Desktop, Laptop, and Xbox (via splitter), then outputs directly to its monitor.
+            Looks like this:
         </p>
 
-        <div class="quote fade d14">
-            This architecture provides true flexibility: any device on any monitor, independently, without cable swapping.
-        </div>
+        <img class="fade d17" src="../../assets/logicPlan.png" alt="Diagram of AV routing: Desktop and Laptop both connect to each switch, Xbox connects to splitter which feeds all switches" />
+        <sub>Source: circuitlab.com</sub> 
+        <p class="fade d18">
+            This design allows for maximum flexibility. Each monitor can independently switch between any of the three devices without affecting the others.
 
-        <p class="fade d15">
+            (Ignore the real-world symbols in the diagram, they were just placeholders because I didn't want to draw. 
+            The actual implementation will use simple HDMI switches and a splitter, no custom electronics for now...)
+        </p>
+
+        <h2 class="fade d19">Hardware Layout</h2>
+        <h3 class="fade d20">Monitors:</h3>
+        <p class="fade d21">3 total monitors.</p>
+
+        <h3 class="fade d22">Desktop:</h3>
+        <ul class="fade d23">
+            <li>1 HDMI output</li>
+            <li>3 DisplayPort outputs</li>
+            <li>Use: 1 HDMI → Switch 1, 2 DisplayPort → HDMI adapters → Switch 2 & 3</li>
+        </ul>
+
+        <h3 class="fade d24">Laptop:</h3>
+        <ul class="fade d25">
+            <li>USB-C dock providing 3 HDMI outputs</li>
+            <li>Use: HDMI 1 → Switch 1, HDMI 2 → Switch 2, HDMI 3 → Switch 3</li>
+        </ul>
+
+        <h3 class="fade d26">Xbox:</h3>
+        <ul class="fade d27">
+            <li>1 HDMI output</li>
+            <li>Use: HDMI → 1×4 splitter → feeds all 3 switches</li>
+        </ul>
+
+        <h3 class="fade d28">Switches:</h3>
+        <p class="fade d29">Each monitor has one 3-input HDMI switch.</p>
+        <p class="fade d30">Inputs to each switch:</p>
+        <ul class="fade d31">
+            <li>Input 1 → Desktop</li>
+            <li>Input 2 → Laptop</li>
+            <li>Input 3 → Xbox (from splitter)</li>
+        </ul>
+        <p class="fade d32">Output: Goes directly to that monitor.</p>
+
+        <h2 class="fade d33">Physical Wiring Map</h2>
+        <h3 class="fade d34">Switch 1 (Monitor 1):</h3>
+        <ul class="fade d35">
+            <li>Desktop HDMI</li>
+            <li>Laptop HDMI #1</li>
+            <li>Xbox splitter output #1</li>
+        </ul>
+
+        <h3 class="fade d36">Switch 2 (Monitor 2):</h3>
+        <ul class="fade d37">
+            <li>Desktop DP→HDMI adapter #1</li>
+            <li>Laptop HDMI #2</li>
+            <li>Xbox splitter output #2</li>
+        </ul>
+
+        <h3 class="fade d38">Switch 3 (Monitor 3):</h3>
+        <ul class="fade d39">
+            <li>Desktop DP→HDMI adapter #2</li>
+            <li>Laptop HDMI #3</li>
+            <li>Xbox splitter output #3</li>
+        </ul>
+
+        <h2 class="fade d40">Functionality Achieved</h2>
+        <p class="fade d41">This system allows:</p>
+        <ul class="fade d42">
+            <li><strong>Gaming mode:</strong> Center → Xbox, Left/right → Desktop</li>
+            <li><strong>Work mode:</strong> All screens → Desktop</li>
+            <li><strong>Laptop mode:</strong> All screens → Laptop</li>
+            <li><strong>Mixed mode:</strong> Any monitor can independently display any device</li>
+        </ul>
+
+        <h2 class="fade d43">Performance Target</h2>
+        <p class="fade d44">
+            <strong>Baseline spec:</strong> HDMI 2.0 class switching, 4K @ 60Hz stable, HDR supported (depending on switch quality).
+        </p>
+        <p class="fade d45">
+            Note: This design prioritizes flexibility and cost over 4K120 routing. If high-refresh gaming is needed later, the desktop can still be connected directly via DisplayPort to one monitor as a future upgrade.
+        </p>
+
+        <h2 class="fade d46">Design Philosophy</h2>
+        <ul class="fade d47">
+            <li>Keep wiring simple</li>
+            <li>Avoid over-engineering early</li>
+            <li>Avoid expensive AV matrices</li>
+            <li>Modular so parts can be upgraded later</li>
+        </ul>
+
+        <h2 class="fade d48">DisplayPort Note</h2>
+        <p class="fade d49">
+            Originally considered converting everything to DisplayPort. Updated decision: Keep switching backbone in HDMI for compatibility and cost.
+        </p>
+        <p class="fade d50">
+            Reason: Xbox is HDMI only, Laptop docks output HDMI, HDMI switches and splitters are far more available and affordable. Desktop still benefits from native DisplayPort outputs and can be adapted to HDMI for switching.
+        </p>
+
+        <h2 class="fade d51">Final Direction Locked</h2>
+        <p class="fade d52">
+            No matrix. No custom AV routing hardware. No complex electronics in phase 1.
+        </p>
+        <p class="fade d53">
+            System will use: Splitter + 3 switches, Clean wiring, Modular upgrade path later.
+        </p>
+
+        <p class="fade d54">
             <a href="../../hub.html" class="back-link">← Back to Project Overview</a>
         </p>
     </div>

@@ -17,191 +17,33 @@
             Welcome to the 2026 Desk Project devlog! This is where I document the creation of an L-shaped electric sit/stand desk with advanced AV control for three monitors, Xbox, desktop, and laptop. The goal is flexible device-to-monitor routing without constant cable unplugging and monitor harrassment.
         </p>
 
-        <h2 class="fade d4">Goal</h2>
+        <h2 class="fade d4">Planning Phase Overview</h2>
         <p class="fade d5">
-            Create an L-shaped electric sit/stand desk for the bedroom with clean cable management and flexible AV control for three monitors, an Xbox, a desktop, and a laptop.
+            The planning phase focused on designing a cost-effective AV switching system using 3 HDMI switches and a splitter, avoiding expensive matrix solutions while achieving full flexibility.
         </p>
 
-        <div class="quote fade d6">
-            Primary Objective: Allow any device to appear on any monitor without unplugging cables or having to constantly molest the back of a monitor to find the input buttons.
-        </div>
-
-        <h2 class="fade d7">Examples of Desired Functionality</h2>
-        <ul class="fade d8">
-            <li>Xbox on center screen, desktop on left/right</li>
-            <li>Laptop on all three screens</li>
-            <li>Desktop on all three</li>
-            <li>Any mix, per monitor</li>
-        </ul>
-
-        <h2 class="fade d9">Final System Architecture (Locked)</h2>
-        <p class="fade d10">
-            This project will NOT use a 4×4 matrix OR a KVM. Instead, the system uses:
-        </p>
-        <ul class="fade d11">
+        <h2 class="fade d6">Key Decisions</h2>
+        <ul class="fade d7">
             <li>3 independent HDMI switches (one per monitor)</li>
-            <li>1 HDMI splitter for the Xbox</li>
-            <li>1 triple-HDMI laptop dock</li>
-            <li>Desktop connected using HDMI + DisplayPort→HDMI adapters</li>
+            <li>HDMI splitter for Xbox signal distribution</li>
+            <li>USB-C laptop dock with multiple HDMI outputs</li>
+            <li>DisplayPort to HDMI adapters for desktop</li>
         </ul>
-        <p class="fade d12">
-            This achieves the same functionality as a matrix at a much lower cost and with simpler setup.
+
+        <h2 class="fade d8">System Benefits</h2>
+        <p class="fade d9">
+            This architecture allows any device to appear on any monitor independently, supporting gaming, work, and laptop modes without cable swapping.
         </p>
 
-        <h2 class="fade d13">Core Concept</h2>
-        <p class="fade d14">
-            Each monitor gets its own input selector. Each monitor can independently choose between Desktop, Laptop, or Xbox.
-
-            Looks like this:
-        </p>
-
-        <img class="fade d15" src="../assets/logicPlan.png" alt="Diagram of AV routing: Desktop and Laptop both connect to each switch, Xbox connects to splitter which feeds all switches" />
-        <sub>Source: circuitlab.com</sub> 
-        <p class="fade d16">
-            This design allows for maximum flexibility. Each monitor can independently switch between any of the three devices without affecting the others.
-
-            (Ignore the real-world symbols in the diagram, they were just placeholders because I didn't want to draw. 
-            The actual implementation will use simple HDMI switches and a splitter, no custom electronics for now...)
-        </p>
-
-        <h2 class="fade d15">Hardware Layout</h2>
-        <h3 class="fade d16">Monitors:</h3>
-        <p class="fade d17">3 total monitors.</p>
-
-        <h3 class="fade d18">Desktop:</h3>
-        <ul class="fade d19">
-            <li>1 HDMI output</li>
-            <li>3 DisplayPort outputs</li>
-            <li>Use: 1 HDMI → Switch 1, 2 DisplayPort → HDMI adapters → Switch 2 & 3</li>
-        </ul>
-
-        <h3 class="fade d20">Laptop:</h3>
-        <ul class="fade d21">
-            <li>USB-C dock providing 3 HDMI outputs</li>
-            <li>Use: HDMI 1 → Switch 1, HDMI 2 → Switch 2, HDMI 3 → Switch 3</li>
-        </ul>
-
-        <h3 class="fade d22">Xbox:</h3>
-        <ul class="fade d23">
-            <li>1 HDMI output</li>
-            <li>Use: HDMI → 1×4 splitter → feeds all 3 switches</li>
-        </ul>
-
-        <h3 class="fade d24">Switches:</h3>
-        <p class="fade d25">Each monitor has one 3-input HDMI switch.</p>
-        <p class="fade d26">Inputs to each switch:</p>
-        <ul class="fade d27">
-            <li>Input 1 → Desktop</li>
-            <li>Input 2 → Laptop</li>
-            <li>Input 3 → Xbox (from splitter)</li>
-        </ul>
-        <p class="fade d28">Output: Goes directly to that monitor.</p>
-
-        <h2 class="fade d29">Physical Wiring Map</h2>
-        <h3 class="fade d30">Switch 1 (Monitor 1):</h3>
-        <ul class="fade d31">
-            <li>Desktop HDMI</li>
-            <li>Laptop HDMI #1</li>
-            <li>Xbox splitter output #1</li>
-        </ul>
-
-        <h3 class="fade d32">Switch 2 (Monitor 2):</h3>
-        <ul class="fade d33">
-            <li>Desktop DP→HDMI adapter #1</li>
-            <li>Laptop HDMI #2</li>
-            <li>Xbox splitter output #2</li>
-        </ul>
-
-        <h3 class="fade d34">Switch 3 (Monitor 3):</h3>
-        <ul class="fade d35">
-            <li>Desktop DP→HDMI adapter #2</li>
-            <li>Laptop HDMI #3</li>
-            <li>Xbox splitter output #3</li>
-        </ul>
-
-        <h2 class="fade d36">Functionality Achieved</h2>
-        <p class="fade d37">This system allows:</p>
-        <ul class="fade d38">
-            <li><strong>Gaming mode:</strong> Center → Xbox, Left/right → Desktop</li>
-            <li><strong>Work mode:</strong> All screens → Desktop</li>
-            <li><strong>Laptop mode:</strong> All screens → Laptop</li>
-            <li><strong>Mixed mode:</strong> Any monitor can independently display any device</li>
-        </ul>
-
-        <h2 class="fade d39">Performance Target</h2>
-        <p class="fade d40">
-            <strong>Baseline spec:</strong> HDMI 2.0 class switching, 4K @ 60Hz stable, HDR supported (depending on switch quality).
-        </p>
-        <p class="fade d41">
-            Note: This design prioritizes flexibility and cost over 4K120 routing. If high-refresh gaming is needed later, the desktop can still be connected directly via DisplayPort to one monitor as a future upgrade.
-        </p>
-
-        <h2 class="fade d42">Future Expansion (Phase 2 – Optional)</h2>
-        <p class="fade d43">
-            Start manual using switch buttons. Later upgrade possible by:
-        </p>
-        <ul class="fade d44">
-            <li>Adding Arduino control to press switch buttons</li>
-            <li>Adding a touchscreen interface under the monitors</li>
-            <li>Adding presets: Gaming, Work, Laptop, Mixed</li>
-        </ul>
-
-        <h2 class="fade d45">Display Screen Concept (Future)</h2>
-        <p class="fade d46">
-            Small display panel under monitors showing:
-        </p>
-        <ul class="fade d47">
-            <li>Monitor 1: Desktop</li>
-            <li>Monitor 2: Xbox</li>
-            <li>Monitor 3: Laptop</li>
-        </ul>
-        <p class="fade d48">Possible later features: Logo icons, Transition text, Status indicators.</p>
-
-        <h2 class="fade d49">Desk Build Goals</h2>
-        <ul class="fade d50">
-            <li>L-shaped electric sit/stand desk</li>
-            <li>Hidden cable routing</li>
-            <li>Under-desk mounted switches + splitter</li>
-            <li>Minimal visible wiring</li>
-            <li>Wireless keyboard/mouse</li>
-            <li>Headset + controller stand</li>
-            <li>Clean aesthetic</li>
-        </ul>
-
-        <h2 class="fade d51">Design Philosophy</h2>
-        <ul class="fade d52">
-            <li>Keep wiring simple</li>
-            <li>Avoid over-engineering early</li>
-            <li>Avoid expensive AV matrices</li>
-            <li>Modular so parts can be upgraded later</li>
-        </ul>
-
-        <h2 class="fade d53">DisplayPort Note</h2>
-        <p class="fade d54">
-            Originally considered converting everything to DisplayPort. Updated decision: Keep switching backbone in HDMI for compatibility and cost.
-        </p>
-        <p class="fade d55">
-            Reason: Xbox is HDMI only, Laptop docks output HDMI, HDMI switches and splitters are far more available and affordable. Desktop still benefits from native DisplayPort outputs and can be adapted to HDMI for switching.
-        </p>
-
-        <h2 class="fade d56">Final Direction Locked</h2>
-        <p class="fade d57">
-            No matrix. No custom AV routing hardware. No complex electronics in phase 1.
-        </p>
-        <p class="fade d58">
-            System will use: Splitter + 3 switches, Clean wiring, Modular upgrade path later.
-        </p>
-
-        <h2 class="fade d59">Things To Buy From Amazon</h2>
-        <ul class="fade d60">
-            <li>Cable switch connecting to the monitor PER MONITOR (three for me) <a href="https://www.amazon.ca/gp/product/B0DLN4RLQF?smid=AKXVBT49GGF3B&psc=1" target="_blank" rel="noopener noreferrer">Amazon product</a></li>
-            <li>HDMI cables (one pack of these for me) <a href="https://www.amazon.ca/gp/product/B01MXF5VF7?smid=A3DWYIK6Y9EEQB&psc=1" target="_blank" rel="noopener noreferrer">Amazon product</a></li>
-            <li>Cable splitter (1in,4out) (one for me rn.) <a href="https://www.amazon.ca/gp/product/B0GCCZ57YV?smid=A2XUEGIH96RNP0&th=1" target="_blank" rel="noopener noreferrer">Amazon product</a></li>
-        </ul>
-
-        <div class="quote fade d61">
-            That's the plan. Simple switches, clean wiring, and room to add automation later.
+        <div class="quote fade d10">
+            Simple, affordable, and effective - the switch-based approach delivers matrix-level functionality at a fraction of the cost.
         </div>
+
+        <h2 class="fade d11">Next Steps</h2>
+        <p class="fade d12">
+            With the architecture finalized, Phase One will cover hardware procurement, desk assembly, and cable management setup. See the detailed phase documentation for implementation specifics.
+        </p>
+
     </div>
 
     <script>
