@@ -3,46 +3,131 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Step Three: Desk Frame Assembly - 2026 Desk Project</title>
+    <title>Step Three: Signal Isolation - 2026 Desk Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../../../../../styles/phaseStyles.css" />
 </head>
 
 <body>
     <div class="wrap">
-        <a class="kicker fade" href="../../hub.html">2026 Desk Project / Phase One / Step Three</a>
-        <h1 class="fade d2">Desk Frame Assembly</h1>
+        <a class="kicker fade" href="../../hub.html">2026 Desk Project / Phase Two / Step Three</a>
+        <h1 class="fade d2">Signal Isolation</h1>
 
         <p class="fade d3">
-            Building the physical foundation: an L-shaped electric sit/stand desk that provides ergonomic adjustability and ample space for the multi-monitor setup.
+            This is where the monitor routing idea finally became practical.
         </p>
 
-        <h2 class="fade d4">Desk Specifications</h2>
-        <ul class="fade d5">
-            <li><strong>Shape:</strong> L-shaped corner configuration</li>
-            <li><strong>Height Adjustment:</strong> Electric sit/stand mechanism</li>
-            <li><strong>Surface Area:</strong> Sufficient for 3 monitors + peripherals</li>
-            <li><strong>Weight Capacity:</strong> Support for monitors, PC, and accessories</li>
-        </ul>
+        <p class="fade d4">
+            The original plan relied on IR switching, but that immediately created a problem:
+            all three HDMI switchers respond to the same remote signal. If one device hears
+            “Input 2,” they all switch to Input 2. That kills the entire point of independent routing.
+        </p>
 
-        <h2 class="fade d6">Key Features</h2>
-        <ul class="fade d7">
-            <li>Stable L-shape for corner placement</li>
-            <li>Smooth electric height adjustment</li>
-            <li>Cable management channels built-in</li>
-            <li>Modular design for future modifications</li>
-        </ul>
+        <p class="fade d5">
+            Software wasn’t the solution. Firmware hacking was unreliable. Shielding the devices
+            physically would take space and look messy. The fix turned out to be mechanical.
+        </p>
 
-        <h2 class="fade d8">Assembly Considerations</h2>
+        <div class="accentLine fade d6"></div>
+
+        <h2 class="fade d7">The Realization</h2>
+
+        <p class="fade d8">
+            Each switch doesn’t need to hear the room. It only needs to hear a dedicated signal.
+        </p>
+
         <p class="fade d9">
-            Follow manufacturer instructions carefully. Ensure the desk is level and stable before mounting monitors. Plan cable routing paths during assembly.
+            Instead of broadcasting IR and hoping only one device responds, each switch will get its
+            own direct emitter. The Pico W will control three separate IR LEDs — one per switch —
+            effectively giving each unit a private remote.
         </p>
 
-        <div class="quote fade d10">
-            A solid foundation is essential for the clean aesthetic and reliable operation of the entire system.
+        <p class="fade d10">
+            That removes interference entirely and makes the system addressable.
+        </p>
+
+        <div class="accentLine fade d11"></div>
+
+        <h2 class="fade d12">Physical Isolation</h2>
+
+        <p class="fade d13">
+            The key piece is a small 3D-printed shroud that slides over the front of each HDMI switch.
+            The design leaves the IR receiver area exposed internally, but blocks outside light from
+            reaching it.
+        </p>
+
+        <img class="fade d14" src="../../assets/IR-Isolator.png" alt="3D-printed shroud for HDMI switch IR receiver" />
+        <sub>Source: <a href="https://cad.onshape.com/documents/3ca977183a75dff5df29359f/w/1b933c6609f717a02d279e18/e/43a4b92cb45a698a280180ba" target="_blank" rel="noopener noreferrer">Self made VIA Onshape</a></sub> 
+
+        <p class="fade d14">
+            A circular channel in the front holds a dedicated IR LED aimed directly at the receiver.
+            Once mounted, the signal path becomes controlled and directional:
+        </p>
+
+        <div class="quote fade d15">
+            Pico → LED → tunnel → receiver
         </div>
 
-        <p class="fade d11">
+        <p class="fade d16">
+            No bleed. No overlap. No shared input noise.
+        </p>
+
+        <p class="fade d17">
+            Each switch now responds only to its assigned emitter.
+        </p>
+
+        <div class="accentLine fade d18"></div>
+
+        <h2 class="fade d19">Control Layer</h2>
+
+        <p class="fade d20">
+            The Pico W becomes the routing brain.
+        </p>
+
+        <ul class="fade d21">
+            <li>Three GPIO pins → three IR LEDs</li>
+            <li>One LED per HDMI switch</li>
+            <li>Touchscreen sends commands to Pico</li>
+            <li>Pico fires the correct emitter</li>
+        </ul>
+
+        <p class="fade d22">
+            Instead of cycling inputs, the system can now issue direct selections:
+        </p>
+
+        <div class="quote fade d23">
+            Switch A → Input 1<br>
+            Switch B → Input 3<br>
+            Switch C → Input 2
+        </div>
+
+        <p class="fade d24">
+            This effectively simulates a matrix switch without needing a $1000+ hardware solution.
+        </p>
+
+        <div class="accentLine fade d25"></div>
+
+        <h2 class="fade d26">Why This Works</h2>
+
+        <p class="fade d27">
+            The hardware itself was never the limitation. The real issue was signal separation.
+        </p>
+
+        <p class="fade d28">
+            By isolating the receivers and assigning a dedicated emitter to each one, the system
+            becomes predictable, modular, and controllable. No firmware changes required. No
+            internal modifications. Just controlled input targeting.
+        </p>
+
+        <p class="fade d29">
+            It’s simple, reliable, and scales cleanly.
+        </p>
+
+        <p class="fade d30">
+            And most importantly — it turns three cheap HDMI switches into an addressable routing system.
+        </p>
+
+        <p class="fade d31">
             <a href="../../hub.html" class="back-link">← Back to Project Overview</a>
         </p>
     </div>
@@ -75,5 +160,4 @@
         })();
     </script>
 </body>
-
 </html>

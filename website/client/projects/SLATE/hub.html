@@ -1,44 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MINIMORPHIC — SLATE</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Instrument+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../../styles/main.css">
     <style>
-        .back-bar{
-            position:fixed;top:0;left:0;right:0;
-            padding:14px 20px;
-            display:flex;align-items:center;justify-content:space-between;
-            background:rgba(253,251,248,.92);
-            backdrop-filter:blur(8px);
-            z-index:100;
-            border-bottom:1px solid #e8ddd0;
+        .back-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(253, 251, 248, .92);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            border-bottom: 1px solid #e8ddd0;
         }
-        .back-btn{
-            padding:7px 16px;border-radius:10px;border:1.5px solid #e8ddd0;
-            background:#fdfbf8;color:#8b6f47;font-weight:600;font-size:12px;
-            cursor:pointer;font-family:'Instrument Sans',sans-serif;
-            transition:background .2s,border-color .2s;
+
+        .back-btn {
+            padding: 7px 16px;
+            border-radius: 10px;
+            border: 1.5px solid #e8ddd0;
+            background: #fdfbf8;
+            color: #8b6f47;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: 'Instrument Sans', sans-serif;
+            transition: background .2s, border-color .2s;
         }
-        .back-btn:hover{background:#f3ece2;border-color:#d4a574}
-        .back-user{font-size:12px;color:#8b6f47;font-family:'JetBrains Mono',monospace;opacity:.85}
-        .logout-btn{
-            padding:7px 12px;border-radius:10px;border:none;
-            background:#e88b9a;color:white;font-weight:600;
-            cursor:pointer;font-size:11px;
+
+        .back-btn:hover {
+            background: #f3ece2;
+            border-color: #d4a574
         }
-        .container{padding-top:70px}
+
+        .back-user {
+            font-size: 12px;
+            color: #8b6f47;
+            font-family: 'JetBrains Mono', monospace;
+            opacity: .85
+        }
+
+        .logout-btn {
+            padding: 7px 12px;
+            border-radius: 10px;
+            border: none;
+            background: #e88b9a;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .container {
+            padding-top: 70px
+        }
     </style>
 </head>
+
 <body>
     <div class="grid-bg"></div>
 
     <div class="back-bar">
-        <button class="back-btn" onclick="window.location.href='../../../transition/transitionIndex.html'">&larr; Back to Hub</button>
+        <button class="back-btn" onclick="window.location.href='../../../transition/transitionIndex.html'">&larr; Back
+            to Hub</button>
         <span class="back-user" id="userLabel"></span>
         <button class="logout-btn" onclick="mmLogout()">[ End Session ]</button>
     </div>
@@ -54,7 +90,8 @@
         <section class="hero">
             <div class="sketch-element sketch-arrow"></div>
             <h1><span class="highlight">SLATE</span> — Custom Laptop Build</h1>
-            <p>I'm building a laptop from scratch. This page tracks the actual progress — what's done, what's next, and what I learned along the way.</p>
+            <p>I'm building a laptop from scratch. This page tracks the actual progress — what's done, what's next, and
+                what I learned along the way.</p>
         </section>
 
         <section class="updates-section">
@@ -77,14 +114,30 @@
             <p>MINIMORPHIC &copy; 2026 &bull; Made by Zac</p>
             <br>
             <div class="social-links" style="display:flex;gap:20px;justify-content:center;">
-                <a href="https://github.com/Chaotic-Mess/MINIMORPHIC?tab=readme-ov-file" target="_blank" aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 18 4.77 5.07 5.07 0 0 0 18.09 1s-1.18-.35-3.91 1.36A13.38 13.38 0 0 0 12 3.27a13.38 13.38 0 0 0-2.18-.91C7.09.65 5.91 1 5.91 1A5.07 5.07 0 0 0 6 4.77 5.44 5.44 0 0 0 4.5 9c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.61V22"></path></svg>
+                <a href="https://github.com/Chaotic-Mess/MINIMORPHIC?tab=readme-ov-file" target="_blank"
+                    aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 18 4.77 5.07 5.07 0 0 0 18.09 1s-1.18-.35-3.91 1.36A13.38 13.38 0 0 0 12 3.27a13.38 13.38 0 0 0-2.18-.91C7.09.65 5.91 1 5.91 1A5.07 5.07 0 0 0 6 4.77 5.44 5.44 0 0 0 4.5 9c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.61V22">
+                        </path>
+                    </svg>
                 </a>
                 <a href="https://www.linkedin.com/in/zacmatthias/" target="_blank" aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
                 </a>
                 <a href="https://www.instagram.com/zacmatthias_/" target="_blank" aria-label="Instagram">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
                 </a>
             </div>
         </footer>
@@ -92,57 +145,64 @@
 
     <!-- Session guard -->
     <script>
-    (function(){
-        const raw = localStorage.getItem('mm_session');
-        if(!raw){ window.location.href='../../../index.html'; return; }
-        try{
-            const s = JSON.parse(raw);
-            if(!s.time || Date.now()-s.time > 12*60*60*1000){
+        (function () {
+            const raw = localStorage.getItem('mm_session');
+            if (!raw) { window.location.href = '../../../index.html'; return; }
+            try {
+                const s = JSON.parse(raw);
+                if (!s.time || Date.now() - s.time > 12 * 60 * 60 * 1000) {
+                    localStorage.removeItem('mm_session');
+                    window.location.href = '../../../index.html'; return;
+                }
+                window.MM_USER = s.user;
+            } catch {
                 localStorage.removeItem('mm_session');
-                window.location.href='../../../index.html'; return;
+                window.location.href = '../../../index.html';
             }
-            window.MM_USER = s.user;
-        }catch{
-            localStorage.removeItem('mm_session');
-            window.location.href='../../../index.html';
-        }
-    })();
+        })();
     </script>
 
     <script>
-    // ── Project data for SLATE ──
-    const updates = [
-        {
-            tag: 'CREATION',
-            title: 'Founding',
-            desc: 'Where it all started. MINIMORPHIC goes live.',
-            date: 'Jan 30, 2026 | 11:50pm',
-            url: 'updates/Update1.html'
+        // Project data for SLATE
+        const updates = [
+            {
+                tag: 'CREATION',
+                title: 'Founding',
+                desc: 'Where it all started. MINIMORPHIC goes live.',
+                date: 'Jan 30, 2026 | 11:50pm',
+                url: 'updates/Update1.html'
+            }
+        ];
+
+        const phases = [
+            {
+                title: 'Phase One',
+                subtitle: 'Foundation & Brain Selection',
+                status: 'PAUSED',
+                steps: [
+                    {
+                        title: 'Reality Check (Prototype Brain)',
+                        description: 'Choosing the development brain that lets us design the object.',
+                        date: 'Jan 30, 2026',
+                        status: 'complete',
+                        url: 'phases/phaseOne/stepOne.html'
+                    }
+                ]
+            }
+        ];
+
+        // Render
+        function getStatusIcon(s) {
+            icon = null;
+            if (s === 'complete') icon = '✓';
+            else if (s === 'in-progress') icon = '→';
+            else if (s === 'pending') icon = '○'; 
+            else if (s === 'paused') icon = '⏸';
+            return icon
         }
-    ];
 
-    const phases = [
-        {
-            title: 'Phase One',
-            subtitle: 'Foundation & Brain Selection',
-            status: 'in-progress',
-            steps: [
-                {
-                    title: 'Reality Check (Prototype Brain)',
-                    description: 'Choosing the development brain that lets us design the object.',
-                    date: 'Jan 30, 2026',
-                    status: 'complete',
-                    url: 'phases/phaseOne/stepOne.html'
-                }
-            ]
-        }
-    ];
-
-    // ── Render ──
-    function getStatusIcon(s){ return s==='complete'?'✓':s==='in-progress'?'→':'○'; }
-
-    function renderUpdates(){
-        document.getElementById('update-cards').innerHTML = updates.map(u => `
+        function renderUpdates() {
+            document.getElementById('update-cards').innerHTML = updates.map(u => `
             <div class="card" onclick="window.location.href='${u.url}'">
                 <span class="card-tag">${u.tag}</span>
                 <h3>${u.title}</h3>
@@ -150,14 +210,14 @@
                 <div class="card-date">${u.date}</div>
             </div>
         `).join('');
-    }
+        }
 
-    function renderPhases(){
-        const c = document.getElementById('phases-container');
-        c.innerHTML = '';
-        phases.forEach((ph,pi) => {
-            const stepsHtml = ph.steps.map((st,si) => `
-                <a href="${st.url}" class="step-item ${st.status}" style="animation-delay:${(pi*.1)+(si*.05)}s">
+        function renderPhases() {
+            const c = document.getElementById('phases-container');
+            c.innerHTML = '';
+            phases.forEach((ph, pi) => {
+                const stepsHtml = ph.steps.map((st, si) => `
+                <a href="${st.url}" class="step-item ${st.status}" style="animation-delay:${(pi * .1) + (si * .05)}s">
                     <span class="step-status">${getStatusIcon(st.status)}</span>
                     <div class="step-content">
                         <h4>${st.title}</h4>
@@ -167,35 +227,36 @@
                 </a>
             `).join('');
 
-            c.innerHTML += `
-                <div class="phase-block ${ph.status}" style="animation-delay:${pi*.1}s">
+                c.innerHTML += `
+                <div class="phase-block ${ph.status}" style="animation-delay:${pi * .1}s">
                     <div class="phase-header">
                         <div class="phase-info">
                             <span class="phase-tag">${ph.title}</span>
                             <h3>${ph.subtitle}</h3>
                         </div>
-                        <span class="phase-status-badge ${ph.status}">${ph.status.replace('-',' ')}</span>
+                        <span class="phase-status-badge ${ph.status}">${ph.status.replace('-', ' ')}</span>
                     </div>
                     <div class="steps-list">${stepsHtml}</div>
                 </div>
             `;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderUpdates();
+            renderPhases();
+            const label = document.getElementById('userLabel');
+            if (label && window.MM_USER) label.textContent = '// ' + window.MM_USER;
         });
-    }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        renderUpdates();
-        renderPhases();
-        const label = document.getElementById('userLabel');
-        if(label && window.MM_USER) label.textContent = '// ' + window.MM_USER;
-    });
-
-    function mmLogout(){
-        localStorage.removeItem('mm_session');
-        sessionStorage.removeItem('mm_animations_played');
-        sessionStorage.removeItem('mm_intro_played');
-        localStorage.removeItem('mm_current_project');
-        window.location.href = '../../../index.html';
-    }
+        function mmLogout() {
+            localStorage.removeItem('mm_session');
+            sessionStorage.removeItem('mm_animations_played');
+            sessionStorage.removeItem('mm_intro_played');
+            localStorage.removeItem('mm_current_project');
+            window.location.href = '../../../index.html';
+        }
     </script>
 </body>
+
 </html>

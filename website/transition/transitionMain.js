@@ -29,7 +29,7 @@ const PROJECTS = [
     title: 'SLATE',
     desc:  'My custom laptop build. Designing the whole thing from scratch.',
     icon:  '',
-    status:'active',
+    status:'paused',
     url:   '../client/projects/SLATE/hub.html'
   },
   {
