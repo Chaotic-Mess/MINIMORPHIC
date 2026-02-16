@@ -1,8 +1,10 @@
-/* ═══════════════════════════════════════════════════════
-   MINIMORPHIC — Hub Controller
-   ═══════════════════════════════════════════════════════ */
+/* 
+   =======================================
+   MINIMORPHIC — Transition Controller [JS]
+   =======================================
+*/
 
-// ── Session guard ──────────────────────────────────────
+//  Session guard 
 (function(){
   const raw = localStorage.getItem('mm_session');
   if(!raw){ window.location.href='../index.html'; return; }
@@ -20,13 +22,13 @@
   }
 })();
 
-// ── Project data ───────────────────────────────────────
+//  Project data 
 const PROJECTS = [
   {
     id:    'slate',
     title: 'SLATE',
     desc:  'My custom laptop build. Designing the whole thing from scratch.',
-    icon:  '💻',
+    icon:  '',
     status:'active',
     url:   '../client/projects/SLATE/hub.html'
   },
@@ -34,149 +36,117 @@ const PROJECTS = [
     id:    'desk',
     title: '2026 Desk',
     desc:  'L-shaped sit/stand desk with HDMI switching for three monitors.',
-    icon:  '🖥️',
+    icon:  '',
     status:'active',
     url:   '../client/projects/DeskProject/hub.html'
   }
-  // Add more projects here and the radial layout auto-adjusts
+  // Add more projects here
 ];
 
-// ── DOM refs ───────────────────────────────────────────
+//  DOM refs 
 const intro      = document.getElementById('intro');
 const hub        = document.getElementById('hub');
-const selector   = document.getElementById('selector');
-const hubCircle  = document.getElementById('hubCircle');
-const preview    = document.getElementById('preview');
-const prevTitle  = document.getElementById('previewTitle');
-const prevDesc   = document.getElementById('previewDesc');
-const prevCta    = document.getElementById('previewCta');
+const container  = document.getElementById('projectsContainer');
 const exitOv     = document.getElementById('exitOverlay');
 const userBadge  = document.getElementById('userBadge');
 const logoutBtn  = document.getElementById('logoutBtn');
 
-// ── State ──────────────────────────────────────────────
+//  State 
 let selected = 0;
-let cards    = [];
-let connectors = [];
+let projectItems = [];
 
-// ── Build radial cards ─────────────────────────────────
-function buildCards(){
-  const n = PROJECTS.length;
-  const radius = Math.min(selector.offsetWidth, selector.offsetHeight) * 0.38;
-  const startAngle = -Math.PI/2; // top
-
-  PROJECTS.forEach((proj,i)=>{
-    const angle = startAngle + (2*Math.PI/n)*i;
-
-    // connector line
-    const conn = document.createElement('div');
-    conn.className = 'connector';
-    const connLen = radius - 70;
-    conn.style.width = connLen + 'px';
-    conn.style.transform = `rotate(${angle}rad)`;
-    conn.style.left = '50%';
-    conn.style.top  = '50%';
-    selector.appendChild(conn);
-    connectors.push(conn);
-
-    // card
-    const card = document.createElement('div');
-    card.className = 'project-card';
-    card.dataset.index = i;
-    card.innerHTML = `
-      <div class="card-icon" style="background:${proj.status==='active'?'rgba(183,223,170,.12)':'rgba(158,205,230,.1)'}">${proj.icon}</div>
-      <div class="card-title">${proj.title}</div>
-      <div class="card-desc">${proj.desc}</div>
-      <span class="card-status ${proj.status}">${proj.status}</span>
+//  Build project list 
+function buildProjects(){
+  PROJECTS.forEach((proj, i) => {
+    const item = document.createElement('div');
+    item.className = 'project-item';
+    item.dataset.index = i;
+    item.innerHTML = `
+      <div class="project-header">
+        <div class="project-icon">${proj.icon}</div>
+        <div class="project-title">${proj.title}</div>
+        <span class="project-status ${proj.status}">${proj.status}</span>
+      </div>
+      <div class="project-desc">${proj.desc}</div>
     `;
 
-    // position around the circle
-    const cx = 50 + Math.cos(angle)*((radius/selector.offsetWidth)*100);
-    const cy = 50 + Math.sin(angle)*((radius/selector.offsetHeight)*100);
-    card.style.left = cx + '%';
-    card.style.top  = cy + '%';
+    container.appendChild(item);
+    projectItems.push(item);
 
-    selector.appendChild(card);
-    cards.push(card);
+    // Stagger animation
+    setTimeout(() => item.classList.add('show'), 100 * i);
 
-    // stagger reveal
-    setTimeout(()=> card.classList.add('placed'), 150*i);
+    // Click to select and open
+    item.addEventListener('click', () => {
+      selected = i;
+      updateSelection();
+      setTimeout(openProject, 200);
+    });
 
-    // mouse events
-    card.addEventListener('mouseenter',()=>{ selected=i; updateSelection(); });
-    card.addEventListener('click',()=>{ selected=i; updateSelection(); openProject(); });
+    // Hover to preview
+    item.addEventListener('mouseenter', () => {
+      selected = i;
+      updateSelection();
+    });
   });
 }
 
-// ── Selection ──────────────────────────────────────────
+// Selection 
 function updateSelection(){
-  cards.forEach((c,i)=>{
-    c.classList.toggle('selected', i===selected);
+  projectItems.forEach((item, i) => {
+    item.classList.toggle('selected', i === selected);
   });
-  connectors.forEach((c,i)=>{
-    c.classList.toggle('active', i===selected);
-  });
-  document.querySelectorAll('.orbit').forEach(o=> o.classList.add('glow'));
-
-  const proj = PROJECTS[selected];
-  prevTitle.textContent = proj.title;
-  prevDesc.textContent  = proj.desc;
-  preview.classList.add('show');
 }
 
-// ── Open project ───────────────────────────────────────
+//  Open project 
 function openProject(){
   const proj = PROJECTS[selected];
-  if(!proj.url || proj.url==='#') return;
+  if(!proj.url || proj.url === '#') return;
 
   exitOv.classList.add('go');
-  setTimeout(()=>{ window.location.href = proj.url; }, 450);
+  setTimeout(() => { window.location.href = proj.url; }, 450);
 }
 
-// ── Keyboard ───────────────────────────────────────────
-document.addEventListener('keydown', e=>{
-  if(e.key==='ArrowRight'||e.key==='ArrowDown'){
+//  Keyboard navigation 
+document.addEventListener('keydown', e => {
+  if(e.key === 'ArrowDown'){
     e.preventDefault();
-    selected = (selected+1) % PROJECTS.length;
+    selected = (selected + 1) % PROJECTS.length;
     updateSelection();
-  } else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){
+  } else if(e.key === 'ArrowUp'){
     e.preventDefault();
-    selected = (selected-1+PROJECTS.length) % PROJECTS.length;
+    selected = (selected - 1 + PROJECTS.length) % PROJECTS.length;
     updateSelection();
-  } else if(e.key==='Enter'){
+  } else if(e.key === 'Enter'){
     e.preventDefault();
     openProject();
   }
 });
 
-// Center circle click
-hubCircle.addEventListener('click', openProject);
-prevCta.addEventListener('click', openProject);
-
-// ── User badge & logout ────────────────────────────────
+//  User badge & logout 
 if(window.MM_USER){
-  userBadge.textContent = '// signed in as ' + window.MM_USER;
+  userBadge.textContent = '// ' + window.MM_USER.toUpperCase();
 }
-logoutBtn.addEventListener('click',()=>{
+
+logoutBtn.addEventListener('click', () => {
   localStorage.removeItem('mm_session');
-  sessionStorage.removeItem('mm_animations_played');
+  sessionStorage.removeItem('mm_intro_played');
   localStorage.removeItem('mm_current_project');
   window.location.href = '../index.html';
 });
 
-// ── Boot sequence ──────────────────────────────────────
-window.addEventListener('load',()=>{
-  // Has the intro already played this session?
+//  Boot sequence 
+window.addEventListener('load', () => {
   const introPlayed = sessionStorage.getItem('mm_intro_played');
-  const introDuration = introPlayed ? 0 : 3400;
+  const introDuration = introPlayed ? 0 : 3200;
 
   if(introPlayed) intro.classList.add('done');
 
-  setTimeout(()=>{
+  setTimeout(() => {
     intro.classList.add('done');
-    sessionStorage.setItem('mm_intro_played','1');
+    sessionStorage.setItem('mm_intro_played', '1');
     hub.classList.add('visible');
-    buildCards();
+    buildProjects();
     updateSelection();
   }, introDuration);
 });

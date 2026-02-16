@@ -1,3 +1,7 @@
+//  ===================================
+//  MINIMORPHIC — Login Page [JS]
+//  ===================================
+
 // Check if user is already logged in
 const session = localStorage.getItem("mm_session");
 if (session) {

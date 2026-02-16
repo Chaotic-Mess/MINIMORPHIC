@@ -1,3 +1,9 @@
+<!--  
+   ==========================================
+   MINIMORPHIC — Transition Controller [HTML]
+   ==========================================
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,58 +14,36 @@
 </head>
 <body>
 
-  <!-- Page-exit white-out -->
   <div id="exitOverlay"></div>
 
-  <!-- ── Intro animation ── -->
+  <!-- Intro -->
   <div id="intro">
-    <div class="intro-ring"></div>
-    <div class="intro-ring"></div>
-    <div class="intro-ring"></div>
-    <div class="intro-title">MINIMORPHIC</div>
-    <div class="intro-sub">// pick a project</div>
-    <div class="intro-bar-track"><div class="intro-bar-fill"></div></div>
+    <div class="intro-logo">MINIMORPHIC</div>
+    <div class="intro-sub">// DIY project devlogs</div>
+    <div class="intro-bar"><div class="intro-bar-fill"></div></div>
   </div>
 
-  <!-- ── Hub ── -->
+  <!-- Hub -->
   <div id="hub">
-
-    <!-- User badge & logout -->
-    <div class="hub-user" id="userBadge"></div>
-    <button class="hub-logout" id="logoutBtn">[ End Session ]</button>
-
-    <!-- Header -->
-    <div class="hub-header">
-      <div class="hub-logo">MINIMORPHIC</div>
-      <div class="hub-tagline">// choose a project</div>
-    </div>
-
-    <!-- Radial selector — cards injected by JS -->
-    <div class="selector" id="selector">
-      <!-- Orbit rings -->
-      <div class="orbit orbit-1"></div>
-      <div class="orbit orbit-2"></div>
-      <div class="orbit orbit-3"></div>
-
-      <!-- Center -->
-      <div class="hub-circle" id="hubCircle">
-        <span class="hub-circle-label">OPEN</span>
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">MINIMORPHIC</div>
+        <div class="tagline">// SELECT PROJECT</div>
       </div>
-
-      <!-- Connectors injected by JS -->
+      <div class="header-right">
+        <div class="user-badge" id="userBadge"></div>
+        <button class="logout-btn" id="logoutBtn">END SESSION</button>
+      </div>
     </div>
 
-    <!-- Preview panel (below selector) -->
-    <div class="preview" id="preview">
-      <div class="preview-title" id="previewTitle"></div>
-      <div class="preview-desc" id="previewDesc"></div>
-      <button class="preview-cta" id="previewCta">OPEN PROJECT &rarr;</button>
+    <div class="projects-container" id="projectsContainer">
+      <!-- Projects injected here -->
     </div>
 
-    <!-- Keyboard hints -->
-    <div class="instructions">
-      <span><span class="kbd">&larr;</span><span class="kbd">&rarr;</span> navigate</span>
+    <div class="footer-hint">
+      <span><span class="kbd">↑</span><span class="kbd">↓</span> navigate</span>
       <span><span class="kbd">Enter</span> open</span>
+      <span><span class="kbd">Click</span> select</span>
     </div>
   </div>
 
