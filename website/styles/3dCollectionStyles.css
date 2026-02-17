@@ -400,6 +400,17 @@
     background: rgba(212, 165, 116, 0.05);
 }
 
+.control-btn.active {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: white;
+}
+
+.model-viewer canvas {
+    display: block;
+    border-radius: 10px;
+}
+
 /* Modal Right - Info */
 .modal-right {
     display: flex;

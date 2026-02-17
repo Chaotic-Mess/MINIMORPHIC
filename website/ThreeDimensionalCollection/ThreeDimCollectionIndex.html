@@ -2,6 +2,9 @@
    ===================================
    MINIMORPHIC — 3D Collection [HMTL]
    ===================================
+
+   OLD. Now combined with the transition page, 
+   but keeping this as a backup in case I want to revert to the original design.
 -->
 
 <!DOCTYPE html>
@@ -13,6 +16,14 @@
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/3dCollectionStyles.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+        }
+    }
+    </script>
 </head>
 <body>
     <div class="grid-bg"></div>
@@ -106,9 +117,9 @@
                                 <span class="format">.OBJ</span>
                                 <span class="size">2.4 MB</span>
                             </button>
-                            <button class="download-btn" onclick="downloadModel('fbx')">
-                                <span class="format">.FBX</span>
-                                <span class="size">3.1 MB</span>
+                            <button class="download-btn" onclick="downloadModel('glb')">
+                                <span class="format">.GLB</span>
+                                <span class="size">Binary GLTF</span>
                             </button>
                             <button class="download-btn" onclick="downloadModel('gltf')">
                                 <span class="format">.GLTF</span>
