@@ -4,6 +4,17 @@
    =========================================
 */
 
+:root {
+  --bg: #f5e6d3;
+  --paper: #fdfbf8;
+  --text: #2a2a2a;
+  --accent: #d4a574;
+  --accent-dark: #c89563;
+  --gray: #a89080;
+  --border: #e8ddd0;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -194,11 +205,29 @@ body {
 }
 
 /* ── Project list ── */
-.projects-container {
+.hub-content {
   flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d4a574 transparent;
+}
+
+.hub-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hub-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hub-content::-webkit-scrollbar-thumb {
+  background: #d4a574;
+  border-radius: 3px;
+}
+
+.projects-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 2rem 3rem;
   max-width: 800px;
   margin: 0 auto;
@@ -366,5 +395,54 @@ body {
 
   .intro-logo {
     font-size: 2.5rem;
+  }
+
+  .collection-section {
+    padding: 0 2rem 1.5rem;
+  }
+
+  .section-divider {
+    margin: 1rem 2rem 1.5rem;
+  }
+}
+
+/* ── 3D Collection section ── */
+.section-divider {
+  border: none;
+  border-top: 1px solid #e8ddd0;
+  margin: 1rem 3rem 2rem;
+}
+
+.collection-section {
+  padding: 0 3rem 2rem;
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 0.75rem;
+  color: #a89080;
+  letter-spacing: 0.1em;
+}
+
+.collection-section .controls {
+  margin-bottom: 1.5rem;
+}
+
+.collection-section .masonry-grid {
+  column-count: 3;
+}
+
+@media (max-width: 1024px) {
+  .collection-section .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .collection-section .masonry-grid {
+    column-count: 1;
   }
 }

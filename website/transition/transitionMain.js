@@ -148,5 +148,6 @@ window.addEventListener('load', () => {
     hub.classList.add('visible');
     buildProjects();
     updateSelection();
+    if(typeof renderModels === 'function') renderModels();
   }, introDuration);
 });

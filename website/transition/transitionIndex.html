@@ -10,7 +10,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MINIMORPHIC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/transitionStyle.css">
+  <link rel="stylesheet" href="../styles/3dCollectionStyles.css">
 </head>
 <body>
 
@@ -36,8 +38,30 @@
       </div>
     </div>
 
-    <div class="projects-container" id="projectsContainer">
-      <!-- Projects injected here -->
+    <div class="hub-content">
+      <div class="projects-container" id="projectsContainer">
+        <!-- Projects injected here -->
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 3D Collection (Pinterest-style) -->
+      <div class="collection-section">
+        <div class="section-header">
+          <div class="section-title">// 3D MODEL COLLECTION</div>
+        </div>
+        <div class="controls">
+          <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search models..." oninput="filterModels()">
+          </div>
+          <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterByProject('all')">All</button>
+            <button class="filter-btn" onclick="filterByProject('desk-2026')">2026 Desk</button>
+            <button class="filter-btn" onclick="filterByProject('slate')">SLATE</button>
+          </div>
+        </div>
+        <div class="masonry-grid" id="masonryGrid"></div>
+      </div>
     </div>
 
     <div class="footer-hint">
@@ -47,6 +71,84 @@
     </div>
   </div>
 
+  <!-- Modal for model details -->
+  <div class="modal" id="modelModal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-grid">
+        <div class="modal-left">
+          <div class="model-viewer" id="modelViewer">
+            <div class="viewer-placeholder">
+              <div class="viewer-icon">⟳</div>
+              <p>Interactive 3D viewer</p>
+            </div>
+          </div>
+          <div class="viewer-controls">
+            <button class="control-btn" onclick="resetView()">Reset View</button>
+            <button class="control-btn" onclick="toggleWireframe()">Wireframe</button>
+            <button class="control-btn" onclick="toggleGrid()">Grid</button>
+          </div>
+        </div>
+        <div class="modal-right">
+          <div class="modal-header">
+            <h2 id="modalTitle">Model Name</h2>
+            <div class="modal-tags">
+              <span class="tag" id="modalProject">Project</span>
+              <span class="tag-date" id="modalDate"></span>
+            </div>
+          </div>
+          <div class="modal-description">
+            <h3>Description</h3>
+            <p id="modalDescription"></p>
+          </div>
+          <div class="modal-specs">
+            <h3>Specifications</h3>
+            <div class="specs-grid">
+              <div class="spec-item">
+                <span class="spec-label">Vertices</span>
+                <span class="spec-value" id="modalVertices">—</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Faces</span>
+                <span class="spec-value" id="modalFaces">—</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Materials</span>
+                <span class="spec-value" id="modalMaterials">—</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">File Size</span>
+                <span class="spec-value" id="modalSize">—</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <h3>Download As</h3>
+            <div class="download-buttons">
+              <button class="download-btn" onclick="downloadModel('stl')">
+                <span class="format">.STL</span>
+              </button>
+              <button class="download-btn" onclick="downloadModel('obj')">
+                <span class="format">.OBJ</span>
+              </button>
+              <button class="download-btn" onclick="downloadModel('fbx')">
+                <span class="format">.FBX</span>
+              </button>
+              <button class="download-btn" onclick="downloadModel('gltf')">
+                <span class="format">.GLTF</span>
+              </button>
+            </div>
+          </div>
+          <div class="modal-link">
+            <a href="#" id="modalProjectLink" class="project-link">View in Project Context →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="transitionMain.js"></script>
+  <script src="../ThreeDimensionalCollection/collection.js"></script>
 </body>
 </html>

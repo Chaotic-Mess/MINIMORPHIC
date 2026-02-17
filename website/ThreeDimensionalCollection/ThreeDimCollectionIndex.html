@@ -1,0 +1,136 @@
+<!-- 
+   ===================================
+   MINIMORPHIC — 3D Collection [HMTL]
+   ===================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Collection — MINIMORPHIC</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/3dCollectionStyles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="grid-bg"></div>
+    
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo-wrapper">
+                    <h1>MINIMORPHIC</h1>
+                    <div class="subtitle">3D Model Collection</div>
+                </div>
+                <button class="btn-back" onclick="window.history.back()">← Back to Projects</button>
+            </div>
+        </header>
+
+        <div class="controls">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search models..." oninput="filterModels()">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterByProject('all')">All Projects</button>
+                <button class="filter-btn" onclick="filterByProject('desk-2026')">2026 Desk</button>
+                <button class="filter-btn" onclick="filterByProject('slate')">SLATE</button>
+            </div>
+        </div>
+
+        <div class="masonry-grid" id="masonryGrid">
+            <!-- Model cards will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Modal for expanded view -->
+    <div class="modal" id="modelModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-grid">
+                <div class="modal-left">
+                    <div class="model-viewer" id="modelViewer">
+                        <div class="viewer-placeholder">
+                            <div class="viewer-icon">⟳</div>
+                            <p>Interactive 3D viewer</p>
+                        </div>
+                    </div>
+                    <div class="viewer-controls">
+                        <button class="control-btn" onclick="resetView()">Reset View</button>
+                        <button class="control-btn" onclick="toggleWireframe()">Wireframe</button>
+                        <button class="control-btn" onclick="toggleGrid()">Grid</button>
+                    </div>
+                </div>
+                <div class="modal-right">
+                    <div class="modal-header">
+                        <h2 id="modalTitle">Model Name</h2>
+                        <div class="modal-tags">
+                            <span class="tag" id="modalProject">Project Name</span>
+                            <span class="tag-date" id="modalDate">Jan 1, 2024</span>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-description">
+                        <h3>Description</h3>
+                        <p id="modalDescription">Model description goes here...</p>
+                    </div>
+
+                    <div class="modal-specs">
+                        <h3>Specifications</h3>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">Vertices</span>
+                                <span class="spec-value" id="modalVertices">—</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Faces</span>
+                                <span class="spec-value" id="modalFaces">—</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Materials</span>
+                                <span class="spec-value" id="modalMaterials">—</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">File Size</span>
+                                <span class="spec-value" id="modalSize">—</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <h3>Download As</h3>
+                        <div class="download-buttons">
+                            <button class="download-btn" onclick="downloadModel('obj')">
+                                <span class="format">.OBJ</span>
+                                <span class="size">2.4 MB</span>
+                            </button>
+                            <button class="download-btn" onclick="downloadModel('fbx')">
+                                <span class="format">.FBX</span>
+                                <span class="size">3.1 MB</span>
+                            </button>
+                            <button class="download-btn" onclick="downloadModel('gltf')">
+                                <span class="format">.GLTF</span>
+                                <span class="size">1.8 MB</span>
+                            </button>
+                            <button class="download-btn" onclick="downloadModel('stl')">
+                                <span class="format">.STL</span>
+                                <span class="size">2.9 MB</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="modal-link">
+                        <a href="#" id="modalProjectLink" class="project-link">
+                            View in Project Context →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="collection.js"></script>
+</body>
+</html>
