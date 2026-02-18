@@ -17,4 +17,15 @@ Not a company. Not a startup. Just me. And that’s okay.
 - Use the project folders to find CAD, build notes, and links.
 - Nothing here is polished — it’s a record of what I built and why.
 
+# Legal shit idk
+MINIMORPHIC is a project name and brand identifier.
+
+This license does NOT grant permission to:
+- Use the MINIMORPHIC name commercially
+- Rebrand or resell these designs
+- Claim authorship of original MINIMORPHIC work
+
+Attribution must credit:
+MINIMORPHIC @ https://github.com/Chaotic-Mess/MINIMORPHIC
+
 Visit the site: [HERE](https://chaotic-mess.github.io/MINIMORPHIC/website)
