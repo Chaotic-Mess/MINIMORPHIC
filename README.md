@@ -1,5 +1,7 @@
 ![alt text](https://github.com/Chaotic-Mess/MINIMORPHIC/blob/main/website/client/branding/TextLogoNoBG.png "MINIMORPHIC")
 
+[CLICK HERE TO GET STARTED](https://chaotic-mess.github.io/MINIMORPHIC/website)
+
 This is MINIMORPHIC, A place where I share my personal projects: where they are, the things I bought, the things I didn’t, the things I designed. CAD files, links, notes, and inspirations — all here in one repo.
 
 Not a company. Not a startup. Just me. And that’s okay.
@@ -27,5 +29,3 @@ This license does NOT grant permission to:
 
 Attribution must credit:
 MINIMORPHIC @ https://github.com/Chaotic-Mess/MINIMORPHIC
-
-Visit the site: [HERE](https://chaotic-mess.github.io/MINIMORPHIC/website)
