@@ -5,16 +5,28 @@
 */
 
 (function () {
+    function parseRoutesJsonc(text) {
+        if (window.MM_JSONC && typeof window.MM_JSONC.parse === 'function') {
+            return window.MM_JSONC.parse(text);
+        }
+
+        // Fallback when jsoncParser.js is not loaded yet.
+        const noComments = String(text).replace(/\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? '' : m);
+        const noTrailingCommas = noComments.replace(/,(\s*[}\]])/g, '$1');
+        return JSON.parse(noTrailingCommas);
+    }
+
     async function loadRoutes() {
         try {
-            let routesPath = '../../routes.json';
+            let routesPath = '../../routes.JSONC';
             if (window.location.pathname.includes('/updates/')) {
-                routesPath = '../routes.json';
+                routesPath = '../routes.JSONC';
             }
             
             const response = await fetch(routesPath);
             if (!response.ok) throw new Error('Routes not found');
-            return await response.json();
+            const raw = await response.text();
+            return parseRoutesJsonc(raw);
         } catch (e) {
             console.warn('Navigation routes unavailable:', e);
             return null;
