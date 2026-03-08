@@ -1,0 +1,19 @@
+{
+  "project": "SLATE Custom Laptop",
+  "hub": "hub.html",
+  "sequence": [
+    {
+      "type": "update",
+      "id": "update1",
+      "title": "Founding",
+      "url": "updates/Update1.html"
+    },
+    {
+      "type": "step",
+      "id": "phase1-step1",
+      "phaseTitle": "Phase One",
+      "title": "Reality Check (Prototype Brain)",
+      "url": "phases/phaseOne/stepOne.html"
+    }
+  ]
+}

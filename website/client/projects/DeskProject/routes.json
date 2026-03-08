@@ -1,0 +1,53 @@
+{
+  "project": "2026 Desk Project",
+  "hub": "hub.html",
+  "sequence": [
+    {
+      "type": "update",
+      "id": "update1",
+      "title": "Planning Phase: System Architecture & Design",
+      "url": "updates/Update1.html"
+    },
+    {
+      "type": "step",
+      "id": "phase1-step1",
+      "phaseTitle": "Phase One",
+      "title": "System Architecture Design",
+      "url": "phases/phaseOne/stepOne.html"
+    },
+    {
+      "type": "step",
+      "id": "phase1-step2",
+      "phaseTitle": "Phase One",
+      "title": "Hardware Procurement",
+      "url": "phases/phaseOne/stepTwo.html"
+    },
+    {
+      "type": "step",
+      "id": "phase1-step3",
+      "phaseTitle": "Phase One",
+      "title": "Signal Isolation",
+      "url": "phases/phaseOne/stepThree.html"
+    },
+    {
+      "type": "step",
+      "id": "phase2-step1",
+      "phaseTitle": "Phase Two",
+      "title": "Amazon Shopping Spree",
+      "url": "phases/phaseTwo/stepOne.html"
+    },
+    {
+      "type": "step",
+      "id": "phase2-step2",
+      "phaseTitle": "Phase Two",
+      "title": "IR Control System",
+      "url": "phases/phaseTwo/stepTwo.html"
+    },
+    {
+      "type": "update",
+      "id": "update2",
+      "title": "Additional Purchases",
+      "url": "updates/Update2.html"
+    }
+  ]
+}

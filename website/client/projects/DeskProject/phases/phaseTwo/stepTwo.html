@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Step Two: IR Control System - 2026 Desk Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../../../styles/phaseStyles.css" />
+    <link rel="stylesheet" href="../../../../../styles/components.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <a class="kicker fade" href="../../hub.html">2026 Desk Project / Phase Two / Step Two</a>
+        <h1 class="fade d2">IR Control System</h1>
+
+        <p class="fade d3">
+            The interference problem was established in <a href="../phaseOne/stepThree.html">Phase One, Step Three</a>.
+            This step is about actually building the solution.
+        </p>
+
+        <div class="accentLine fade d4"></div>
+
+        <h2 class="fade d5">The Problem (Quick Recap)</h2>
+        <p class="fade d6">
+            Three HDMI switches, one per monitor. All three share the same IR remote frequency — any button press hits all of them at once. You can't independently route one monitor without dragging the others along for the ride.
+        </p>
+
+        <p class="fade d7">
+            The fix: give each switch its own dedicated IR emitter, aimed directly into a shroud that blocks outside light from reaching the receiver. Each switch only hears its own signal.
+        </p>
+
+        <img id="CAD-IRCover" class="fade d8" src="../../assets/IR-Isolator.png"
+            alt="3D-printed shroud for HDMI switch IR receiver" />
+        <p class="muted fade d9" style="font-size:12px; text-align:center; margin-top:-12px;">
+            Source: <a href="https://cad.onshape.com/documents/3ca977183a75dff5df29359f/w/1b933c6609f717a02d279e18/e/43a4b92cb45a698a280180ba"
+                target="_blank" rel="noopener noreferrer">Self made VIA Onshape</a>
+        </p>
+
+        <div class="accentLine fade d10"></div>
+
+        <h2 class="fade d11">The Controller</h2>
+        <p class="fade d12">
+            A <strong>Raspberry Pi Pico W</strong> acts as the routing brain. Three GPIO pins, each connected to one IR LED. When a switch selection comes in, the Pico fires the right emitter. That's it.
+        </p>
+
+        <ul class="blob-list fade d13">
+            <li>Three GPIO pins → three IR LEDs</li>
+            <li>One LED per HDMI switch</li>
+            <li>Each LED fires directly into the shroud's receiver channel</li>
+            <li>Pico W's WiFi enables wireless command input</li>
+        </ul>
+
+        <div class="accentLine fade d14"></div>
+
+        <h2 class="fade d15">Why the Pico?</h2>
+        <p class="fade d16">
+            Built-in WiFi is the main reason — it opens the door to a soft UI later on, whether that's a touchscreen wired directly to it or a phone-based interface over the local network. I also have a compatible touchscreen that fits the Pico W.
+        </p>
+        <p class="fade d17">
+            That said, it's not locked in. I also have an <strong>Arduino Uno R3</strong> as a fallback. No WiFi on the Uno, so control would go through serial — functional but limiting. The Pico is the plan; the Arduino is the backup.
+        </p>
+
+        <div class="accentLine fade d18"></div>
+
+        <h2 class="fade d19">What This Actually Does</h2>
+        <p class="fade d20">
+            Instead of cycling through inputs on each switch manually, the system can issue direct selections to any switch independently.
+        </p>
+
+        <div class="quote fade d21">
+            Switch A → Input 1 &nbsp;·&nbsp; Switch B → Input 3 &nbsp;·&nbsp; Switch C → Input 2
+        </div>
+
+        <p class="fade d22">
+            One command. No buttons on the back of a monitor. Three cheap HDMI switches behaving like an addressable routing system.
+        </p>
+
+    </div>
+
+    <div class="step-navigation">
+        <div class="nav-buttons">
+            <a class="nav-btn nav-prev"></a>
+            <a href="" class="nav-btn nav-hub">↑ Return to Hub</a>
+            <a class="nav-btn nav-next"></a>
+        </div>
+    </div>
+
+    <script src="../../../../../scripts/navigationButtons.js"></script>
+    <script src="../../../../../scripts/pageUtils.js"></script>
+</body>
+
+</html>
